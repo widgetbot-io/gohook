@@ -6,7 +6,12 @@ import (
 	"git.deploys.io/disweb/gohook/utils"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
+	"net/http"
 )
+
+var Providers []structs.Provider
+var EventCount int
+var ProviderList string
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
@@ -24,13 +29,10 @@ func main() {
 	loadProviders()
 
 	log.WithFields(log.Fields{
-		"version": "v0.0.1",
-		"amount":  len(Providers),
+		"version":   "v0.0.1",
+		"providers": len(Providers),
+		"events":    EventCount,
 	}).Infof("Loaded providers: %s", ProviderList)
-	log.WithFields(log.Fields{
-		"version": "v0.0.1",
-		"amount":  EventCount,
-	}).Info("Loaded all events!")
 
 	_ = router.Run(":8443")
 }
@@ -43,7 +45,7 @@ func setupRoutes(router *gin.Engine) {
 		providerIndex := utils.IndexOfProvider(providerParam, Providers)
 
 		if providerIndex == -1 {
-			c.JSON(404, gin.H{"error": "Provider not found", "provider": providerParam})
+			c.JSON(http.StatusNotFound, gin.H{"error": "Provider not found", "provider": providerParam})
 			return
 		}
 		provider := Providers[providerIndex]
@@ -51,7 +53,7 @@ func setupRoutes(router *gin.Engine) {
 		eventIndex := utils.IndexOfEvent(c.GetHeader(provider.Header), provider.Events)
 
 		if eventIndex == -1 {
-			c.JSON(404, gin.H{"error": "Event not found", "event": c.GetHeader(provider.Header), "provider": provider.Name})
+			c.JSON(http.StatusNotFound, gin.H{"error": "Event not found", "event": c.GetHeader(provider.Header), "provider": provider.Name})
 			return
 		}
 		// event := provider.Events[eventIndex]
