@@ -15,12 +15,12 @@ var ProviderList string
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
+	router := gin.New()
+
 	log.SetFormatter(&log.TextFormatter{
 		ForceColors:   true,
 		FullTimestamp: false,
 	})
-	router := gin.New()
-
 	log.WithFields(log.Fields{
 		"version": "v0.0.1",
 	}).Info("Loading Application...")
@@ -39,8 +39,8 @@ func main() {
 
 func setupRoutes(router *gin.Engine) {
 	router.POST("/api/hook/:ID/:Secret/:Provider", func(c *gin.Context) {
-		// idParam := c.Param("ID")
-		// secretParam := c.Param("Secret")
+		idParam := c.Param("ID")
+		secretParam := c.Param("Secret")
 		providerParam := c.Param("Provider")
 		providerIndex := utils.IndexOfProvider(providerParam, Providers)
 
@@ -56,11 +56,22 @@ func setupRoutes(router *gin.Engine) {
 			c.JSON(http.StatusNotFound, gin.H{"error": "Event not found", "event": c.GetHeader(provider.Header), "provider": provider.Name})
 			return
 		}
-		// event := provider.Events[eventIndex]
+		event := provider.Events[eventIndex]
 
-		// event.Handler()
+		err := provider.Handler(structs.Context{
+			ID:       idParam,
+			Secret:   secretParam,
+			Event:    event,
+			Provider: provider,
+			Context:  c,
+		})
 
-		c.JSON(200, gin.H{"message": "Event successfully fired"})
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Something went wrong when handling the event!", "provider": providerParam, "event": c.GetHeader(provider.Header)})
+			return
+		}
+
+		c.JSON(200, gin.H{"message": "Event successfully handled"})
 		return
 	})
 }
@@ -70,12 +81,13 @@ func loadProviders() {
 	// Slack, RocketChat, HipChat, Telegram, riot.im, IRC, XMPP
 	// Xenforo 2, IPSuite, MyBB, phpBB, Flarem, Discourse
 	addProvider(structs.Provider{
-		Name:   "Gitlab",
-		Header: "X-Gitlab-Event",
+		Name:    "Gitlab",
+		Header:  "X-Gitlab-Event",
+		Handler: gitlab.Handler,
 		Events: []structs.Event{
 			{
-				Name:    "Push Hook",
-				Handler: gitlab.PushHandler,
+				Name: "Push Hook",
+				// Handler: gitlab.PushHandler,
 			},
 		},
 	})
