@@ -67,7 +67,7 @@ func setupRoutes(router *gin.Engine) {
 		})
 
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Something went wrong when handling the event!", "provider": providerParam, "event": c.GetHeader(provider.Header)})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "An internal server error occurred when handling the event.", "provider": providerParam, "event": c.GetHeader(provider.Header)})
 			return
 		}
 
@@ -86,8 +86,8 @@ func loadProviders() {
 		Handler: gitlab.Handler,
 		Events: []structs.Event{
 			{
-				Name: "Push Hook",
-				// Handler: gitlab.PushHandler,
+				Name:    "Push Hook",
+				Handler: gitlab.PushHandler,
 			},
 		},
 	})
