@@ -4,20 +4,29 @@ import "github.com/gin-gonic/gin"
 
 type Event struct {
 	Name    string
-	Handler func(c Context)
+	Handler func(c EventContext)
 }
 
 type Provider struct {
 	Name    string
 	Header  string
 	Events  []Event
-	Handler func(c Context) error
+	Handler func(c ProviderContext) error
 }
 
-type Context struct {
+type ProviderContext struct {
 	ID       string
 	Secret   string
 	Provider Provider
 	Event    Event
 	Context  *gin.Context
+}
+
+type EventContext struct {
+	ID       string
+	Secret   string
+	Provider Provider
+	Event    Event
+	Context  *gin.Context
+	Payload  interface{}
 }

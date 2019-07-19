@@ -58,7 +58,7 @@ func setupRoutes(router *gin.Engine) {
 		}
 		event := provider.Events[eventIndex]
 
-		err := provider.Handler(structs.Context{
+		err := provider.Handler(structs.ProviderContext{
 			ID:       idParam,
 			Secret:   secretParam,
 			Event:    event,
