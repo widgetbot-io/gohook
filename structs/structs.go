@@ -4,7 +4,7 @@ import "github.com/gin-gonic/gin"
 
 type Event struct {
 	Name    string
-	Handler func(c EventContext)
+	Handler func(c EventContext) error
 }
 
 type Provider struct {
