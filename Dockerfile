@@ -2,8 +2,7 @@ FROM golang:1.12-alpine AS builder
 
 WORKDIR /usr/src/app
 
-COPY . .
-RUN go-wrapper download
+COPY . ./
 RUN go build -v
 
 FROM alpine:3.5
