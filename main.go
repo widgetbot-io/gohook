@@ -3,15 +3,15 @@ package main
 import (
 	"git.deploys.io/disweb/gohook/providers/gitlab"
 	"git.deploys.io/disweb/gohook/structs"
-	"git.deploys.io/disweb/gohook/utils"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"net/http"
 )
 
-var Providers []structs.Provider
 var EventCount int
 var ProviderList string
+
+var Providers = map[string]structs.Provider{}
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
@@ -42,21 +42,19 @@ func setupRoutes(router *gin.Engine) {
 		idParam := c.Param("ID")
 		secretParam := c.Param("Secret")
 		providerParam := c.Param("Provider")
-		providerIndex := utils.IndexOfProvider(providerParam, Providers)
+		provider := Providers[providerParam]
 
-		if providerIndex == -1 {
+		if provider.Name == "" {
 			c.JSON(http.StatusNotFound, gin.H{"error": "Provider not found", "provider": providerParam})
 			return
 		}
-		provider := Providers[providerIndex]
 
-		eventIndex := utils.IndexOfEvent(c.GetHeader(provider.Header), provider.Events)
+		event := provider.Events[c.GetHeader(provider.Header)]
 
-		if eventIndex == -1 {
+		if event.Handler == nil {
 			c.JSON(http.StatusNotFound, gin.H{"error": "Event not found", "event": c.GetHeader(provider.Header), "provider": provider.Name})
 			return
 		}
-		event := provider.Events[eventIndex]
 
 		err := provider.Handler(structs.ProviderContext{
 			ID:       idParam,
@@ -81,18 +79,17 @@ func loadProviders() {
 	// Slack, RocketChat, HipChat, Telegram, riot.im, IRC, XMPP
 	// Xenforo 2, IPSuite, MyBB, phpBB, Flarem, Discourse
 	addProvider(structs.Provider{
-		Name:    "Gitlab",
+		Name:    "gitlab",
 		Header:  "X-Gitlab-Event",
 		Handler: gitlab.Handler,
-		Events: []structs.Event{
-			{
-				Name:    "Push Hook",
+		Events: map[string]structs.Event{
+			"Push Hook": {
 				Handler: gitlab.PushHandler,
 			},
 		},
 	})
 	addProvider(structs.Provider{
-		Name: "Github",
+		Name: "github",
 	})
 	/*  addProvider(structs.Provider{
 		Name: "CircleCI",
@@ -132,5 +129,5 @@ func loadProviders() {
 func addProvider(info structs.Provider) {
 	ProviderList += info.Name + ", "
 	EventCount += len(info.Events)
-	Providers = append(Providers, info)
+	Providers[info.Name] = info
 }

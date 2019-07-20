@@ -3,14 +3,13 @@ package structs
 import "github.com/gin-gonic/gin"
 
 type Event struct {
-	Name    string
 	Handler func(c EventContext) error
 }
 
 type Provider struct {
 	Name    string
 	Header  string
-	Events  []Event
+	Events  map[string]Event
 	Handler func(c ProviderContext) error
 }
 
