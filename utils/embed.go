@@ -3,6 +3,7 @@ package utils
 import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/sirupsen/logrus"
+	"time"
 )
 
 type Embed struct {
@@ -47,6 +48,11 @@ func (e *Embed) AddField(title string, content string, inline bool) *Embed {
 
 func (e *Embed) SetURL(url string) *Embed {
 	e.URL = url
+	return e
+}
+
+func (e *Embed) SetTimestamp() *Embed {
+	e.Timestamp = time.Now().Format(time.RFC3339)
 	return e
 }
 
