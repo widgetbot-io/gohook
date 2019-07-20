@@ -11,6 +11,10 @@ func Handler(c structs.ProviderContext) error {
 	// event will be found because we find it earlier
 
 	return c.Event.Handler(structs.EventContext{
-		Payload: payload,
+		ID:       c.ID,
+		Secret:   c.Secret,
+		Event:    c.Event,
+		Provider: c.Provider,
+		Payload:  payload,
 	})
 }

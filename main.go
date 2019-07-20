@@ -65,6 +65,7 @@ func setupRoutes(router *gin.Engine) {
 		})
 
 		if err != nil {
+			log.Error(err)
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "An internal server error occurred when handling the event.", "provider": providerParam, "event": c.GetHeader(provider.Header)})
 			return
 		}

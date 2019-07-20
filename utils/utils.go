@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
 )
@@ -34,7 +35,7 @@ func SendToDiscord(ID string, secret string, embed *Embed) error {
 
 	jsonBytes, _ := json.Marshal(embeds)
 
-	_, err := http.Post("https://canary.discordapp.com/api/webhooks/586650758607536165/r21LYTWAlVYTQ_EHMBjPlK5f8S66p-IFFMXmv-lOqH-gMD-jD4n2kYO5dAhFtKUGiv98", "application/json", bytes.NewBuffer(jsonBytes))
+	_, err := http.Post(fmt.Sprintf("https://canary.discordapp.com/api/webhooks/%s/%s", ID, secret), "application/json", bytes.NewBuffer(jsonBytes))
 	if err != nil {
 		return err
 	}
