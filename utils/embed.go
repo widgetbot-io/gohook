@@ -2,17 +2,18 @@ package utils
 
 import (
 	"github.com/bwmarrin/discordgo"
+	"github.com/sirupsen/logrus"
 )
 
 type Embed struct {
 	discordgo.MessageEmbed
 }
 
-func NewEmbed() Embed {
-	return Embed{}
+func NewEmbed() *Embed {
+	return &Embed{}
 }
 
-func (e Embed) SetTitle(title string) Embed {
+func (e *Embed) SetTitle(title string) *Embed {
 	if len(title) > 256 {
 		panic("Title supplied to EmbedBuilder is over 256 characters")
 	}
@@ -21,7 +22,7 @@ func (e Embed) SetTitle(title string) Embed {
 	return e
 }
 
-func (e Embed) SetDescription(description string) Embed {
+func (e *Embed) SetDescription(description string) *Embed {
 	if len(description) > 2048 {
 		panic("Description supplied to EmbedBuilder is over 2048 characters")
 	}
@@ -30,7 +31,7 @@ func (e Embed) SetDescription(description string) Embed {
 	return e
 }
 
-func (e Embed) AddField(title string, content string, inline bool) Embed {
+func (e *Embed) AddField(title string, content string, inline bool) *Embed {
 	if len(title) > 1024 || len(content) > 1024 {
 		panic("Title or content passed to EmbedBuilder is over 1024 characters.")
 	}
@@ -40,20 +41,21 @@ func (e Embed) AddField(title string, content string, inline bool) Embed {
 		Value:  content,
 		Inline: inline,
 	})
+	logrus.Info(len(e.Fields))
 	return e
 }
 
-func (e Embed) SetURL(url string) Embed {
+func (e *Embed) SetURL(url string) *Embed {
 	e.URL = url
 	return e
 }
 
-func (e Embed) SetColour(colour int) Embed {
+func (e *Embed) SetColour(colour int) *Embed {
 	e.Color = colour
 	return e
 }
 
-func (e Embed) SetFooter(title string, icon string) Embed {
+func (e *Embed) SetFooter(title string, icon string) *Embed {
 	e.Footer = &discordgo.MessageEmbedFooter{
 		Text:    title,
 		IconURL: icon,
@@ -61,21 +63,21 @@ func (e Embed) SetFooter(title string, icon string) Embed {
 	return e
 }
 
-func (e Embed) SetImage(url string) Embed {
+func (e *Embed) SetImage(url string) *Embed {
 	e.Image = &discordgo.MessageEmbedImage{
 		URL: url,
 	}
 	return e
 }
 
-func (e Embed) SetThumbnail(url string) Embed {
+func (e *Embed) SetThumbnail(url string) *Embed {
 	e.Thumbnail = &discordgo.MessageEmbedThumbnail{
 		URL: url,
 	}
 	return e
 }
 
-func (e Embed) SetAuthor(name string, icon string) Embed {
+func (e *Embed) SetAuthor(name string, icon string) *Embed {
 	e.Author = &discordgo.MessageEmbedAuthor{
 		Name:    name,
 		IconURL: icon,
