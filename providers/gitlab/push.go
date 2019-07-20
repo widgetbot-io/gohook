@@ -12,6 +12,10 @@ func PushHandler(c structs.EventContext) error {
 	payload := c.Payload.(webhook.PushEventPayload)
 	branch := utils.GetBranch(payload.Ref)
 
+	if strings.HasPrefix(branch, "!") || strings.HasPrefix(branch, "$") {
+		return nil
+	}
+
 	commit := ""
 	if len(payload.Commits) == 1 {
 		commit = "1 commit"
