@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"git.deploys.io/disweb/gohook/structs"
 	"git.deploys.io/disweb/gohook/utils"
-	"github.com/sirupsen/logrus"
 	webhook "gopkg.in/go-playground/webhooks.v5/gitlab"
 	"strings"
 )
@@ -27,9 +26,9 @@ func PushHandler(c structs.EventContext) error {
 		SetAuthor(payload.UserName, payload.UserAvatar)
 
 	// var reduced []webhook.Commit
-	var authors []string
+	// var authors []string
 
-	for _, commit := range payload.Commits {
+	/* for _, commit := range payload.Commits {
 		if utils.IndexOfAuthor(commit.Author.Name, authors) == -1 {
 			authors = append(authors, commit.Author.Name)
 		}
@@ -38,7 +37,7 @@ func PushHandler(c structs.EventContext) error {
 
 			}
 		}
-	}
+	} */
 
 	for _, commit := range payload.Commits {
 		commitString := ""
@@ -50,9 +49,6 @@ func PushHandler(c structs.EventContext) error {
 
 		embed.AddField(fmt.Sprintf("Commit from %s", commit.Author.Name), fmt.Sprintf("[`%s`](%s) %s", commit.ID[:7], commit.URL, commitString), false)
 	}
-
-	logrus.Info(len(payload.Commits))
-	logrus.Info(len(embed.Fields))
 
 	return utils.SendToDiscord(c.ID, c.Secret, embed)
 }
