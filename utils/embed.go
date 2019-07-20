@@ -2,7 +2,6 @@ package utils
 
 import (
 	"github.com/bwmarrin/discordgo"
-	"github.com/sirupsen/logrus"
 	"time"
 )
 
@@ -42,7 +41,6 @@ func (e *Embed) AddField(title string, content string, inline bool) *Embed {
 		Value:  content,
 		Inline: inline,
 	})
-	logrus.Info(len(e.Fields))
 	return e
 }
 
