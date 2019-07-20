@@ -23,7 +23,7 @@ func PushHandler(c structs.EventContext) error {
 	embed := utils.NewEmbed().
 		SetTitle(fmt.Sprintf("[%s:%s] %s", payload.Project.Name, branch, commit)).
 		SetColour(0x0089ee).
-		// SetURL(payload.Repository.URL).
+		SetURL(payload.Project.WebURL).
 		SetAuthor(payload.UserName, payload.UserAvatar)
 
 	// var reduced []webhook.Commit
@@ -40,8 +40,6 @@ func PushHandler(c structs.EventContext) error {
 		}
 	}
 
-	logrus.Info(authors)
-
 	for _, commit := range payload.Commits {
 		commitString := ""
 		if strings.HasPrefix(commit.Message, "!") || strings.HasPrefix(commit.Message, "$") {
@@ -50,7 +48,7 @@ func PushHandler(c structs.EventContext) error {
 			commitString = commit.Message
 		}
 
-		embed.AddField(fmt.Sprintf("Commit from %s", commit.Author.Name), commitString, false)
+		embed.AddField(fmt.Sprintf("Commit from %s", commit.Author.Name), fmt.Sprintf("[`%s`](%s) %s", commit.ID[:7], commit.URL, commitString), false)
 	}
 
 	logrus.Info(len(payload.Commits))
