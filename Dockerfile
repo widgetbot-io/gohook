@@ -2,6 +2,8 @@ FROM golang:1.12-alpine AS builder
 
 WORKDIR /usr/src/app
 
+RUN apk --no-cache add ca-certificates git
+
 COPY . ./
 RUN go build -v
 
