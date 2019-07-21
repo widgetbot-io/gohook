@@ -20,6 +20,7 @@ type ProviderContext struct {
 	Provider Provider
 	Event    Event
 	Context  *gin.Context
+	Payload  []byte
 }
 
 type EventContext struct {

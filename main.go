@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"git.deploys.io/disweb/gohook/providers/gitlab"
 	"git.deploys.io/disweb/gohook/providers/sonarr"
 	"git.deploys.io/disweb/gohook/structs"
@@ -44,8 +45,10 @@ func setupRoutes(router *gin.Engine) {
 		var event structs.Event
 		var eventName string
 		var provider structs.Provider
+		var BaseDetection structs.BaseDetection
 
-		BaseDetection, _ := utils.Parse(c.Request)
+		payload, _ := utils.Parse(c.Request)
+		_ = json.Unmarshal([]byte(payload), &BaseDetection)
 		idParam := c.Param("ID")
 		secretParam := c.Param("Secret")
 		providerParam := c.Param("Provider")
@@ -74,6 +77,7 @@ func setupRoutes(router *gin.Engine) {
 			Secret:   secretParam,
 			Event:    event,
 			Provider: provider,
+			Payload:  payload,
 			Context:  c,
 		})
 
@@ -107,7 +111,9 @@ func loadProviders() {
 		EventName: "eventType",
 		Handler:   sonarr.Handler,
 		Events: map[string]structs.Event{
-			"Push Hook": {},
+			"Test": {
+				Handler: sonarr.TestHandler,
+			},
 		},
 	})
 	addProvider(structs.Provider{

@@ -53,3 +53,7 @@ func SendToDiscord(ID string, secret string, embed *Embed) error {
 
 	return nil
 }
+
+func FormatSonarrTitle(series structs.SonarrSeries) string {
+	return ""
+}
