@@ -32,14 +32,6 @@ type RadarrTest struct {
 	Episodes []RadarrRelease     `json:"release"`
 }
 
-// Modular structs
-type RadarrGrab struct {
-	Id     string `json:"movie"`
-	Title  string `json:"remoteMovie"`
-	Path   string `json:"path"`
-	TvDBId int    `json:"tvdbId"`
-}
-
 type RadarrMovie struct {
 	Id          int    `json:"id"`
 	Title       string `json:"title"`
