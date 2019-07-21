@@ -7,10 +7,11 @@ type Event struct {
 }
 
 type Provider struct {
-	Name    string
-	Header  string
-	Events  map[string]Event
-	Handler func(c ProviderContext) error
+	Name      string
+	Header    string
+	EventName string
+	Events    map[string]Event
+	Handler   func(c ProviderContext) error
 }
 
 type ProviderContext struct {
@@ -28,4 +29,9 @@ type EventContext struct {
 	Event    Event
 	Context  *gin.Context
 	Payload  interface{}
+}
+
+type BaseDetection struct {
+	EventType  string `json:"eventType,omitempty"`
+	ObjectKind string `json:"object_kind,omitempty"`
 }
