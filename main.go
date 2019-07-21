@@ -2,7 +2,9 @@ package main
 
 import (
 	"git.deploys.io/disweb/gohook/providers/gitlab"
+	"git.deploys.io/disweb/gohook/providers/sonarr"
 	"git.deploys.io/disweb/gohook/structs"
+	"git.deploys.io/disweb/gohook/utils"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"net/http"
@@ -39,20 +41,31 @@ func main() {
 
 func setupRoutes(router *gin.Engine) {
 	router.POST("/api/hook/:ID/:Secret/:Provider", func(c *gin.Context) {
+		var event structs.Event
+		var eventName string
+		var provider structs.Provider
+
+		BaseDetection, _ := utils.Parse(c.Request)
 		idParam := c.Param("ID")
 		secretParam := c.Param("Secret")
 		providerParam := c.Param("Provider")
-		provider := Providers[providerParam]
+		provider = Providers[providerParam]
 
 		if provider.Name == "" {
 			c.JSON(http.StatusNotFound, gin.H{"error": "Provider not found", "provider": providerParam})
 			return
 		}
 
-		event := provider.Events[c.GetHeader(provider.Header)]
+		if provider.Header != "" {
+			event = provider.Events[c.GetHeader(provider.Header)]
+			eventName = c.GetHeader(provider.Header)
+		} else {
+			event = provider.Events[utils.EventDetection(BaseDetection)]
+			eventName = utils.EventDetection(BaseDetection)
+		}
 
 		if event.Handler == nil {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Event not found", "event": c.GetHeader(provider.Header), "provider": provider.Name})
+			c.JSON(http.StatusNotFound, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
 			return
 		}
 
@@ -90,6 +103,14 @@ func loadProviders() {
 		},
 	})
 	addProvider(structs.Provider{
+		Name:      "sonarr",
+		EventName: "eventType",
+		Handler:   sonarr.Handler,
+		Events: map[string]structs.Event{
+			"Push Hook": {},
+		},
+	})
+	addProvider(structs.Provider{
 		Name: "github",
 	})
 	/*  addProvider(structs.Provider{
@@ -113,9 +134,7 @@ func loadProviders() {
 	addProvider(structs.Provider{
 		Name: "Gitlab",
 	})
-	addProvider(structs.Provider{
-		Name: "Sonarr",
-	})
+
 	addProvider(structs.Provider{
 		Name: "Radarr",
 	})
