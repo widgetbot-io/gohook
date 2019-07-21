@@ -132,8 +132,16 @@ func loadProviders() {
 		Header:  "X-GitHub-Event",
 		Handler: github.Handler,
 		Events: map[string]structs.Event{
-			"Push": {},
+			"ping": {
+				Handler: github.PingHandler,
+			},
+			"push": {
+				Handler: github.PushHandler,
+			},
 		},
+	})
+	addProvider(structs.Provider{
+		Name: "Radarr",
 	})
 	/*  addProvider(structs.Provider{
 		Name: "CircleCI",
@@ -157,9 +165,7 @@ func loadProviders() {
 		Name: "Gitlab",
 	})
 
-	addProvider(structs.Provider{
-		Name: "Radarr",
-	})
+
 	addProvider(structs.Provider{
 		Name: "Ombi",
 	})
