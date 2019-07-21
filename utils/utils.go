@@ -47,11 +47,8 @@ func SendToDiscord(ID string, secret string, embed *Embed) error {
 	jsonBytes, _ := json.Marshal(embeds)
 
 	_, err := http.Post(fmt.Sprintf("https://canary.discordapp.com/api/webhooks/%s/%s", ID, secret), "application/json", bytes.NewBuffer(jsonBytes))
-	if err != nil {
-		return err
-	}
 
-	return nil
+	return err
 }
 
 func FormatSonarrTitle(series structs.SonarrSeries, episode structs.SonarrEpisode) string {
