@@ -54,6 +54,21 @@ func SendToDiscord(ID string, secret string, embed *Embed) error {
 	return nil
 }
 
-func FormatSonarrTitle(series structs.SonarrSeries) string {
-	return ""
+func FormatSonarrTitle(series structs.SonarrSeries, episode structs.SonarrEpisode) string {
+	var e string
+	var s string
+
+	if episode.EpisodeNumber >= 10 {
+		e = fmt.Sprintf("%d", episode.EpisodeNumber)
+	} else {
+		e = fmt.Sprintf("0%d", episode.EpisodeNumber)
+	}
+
+	if episode.SeasonNumber >= 10 {
+		s = fmt.Sprintf("%d", episode.SeasonNumber)
+	} else {
+		s = fmt.Sprintf("0%d", episode.SeasonNumber)
+	}
+
+	return fmt.Sprintf("[%s] S%sE%s - %s", series.Title, e, s, episode.Title)
 }
