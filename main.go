@@ -17,6 +17,7 @@ var ProviderList string
 var Providers = map[string]structs.Provider{}
 
 func main() {
+	version := "v0.0.1"
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 
@@ -25,18 +26,21 @@ func main() {
 		FullTimestamp: false,
 	})
 	log.WithFields(log.Fields{
-		"version": "v0.0.1",
+		"version": version,
 	}).Info("Loading Application...")
 
 	setupRoutes(router)
 	loadProviders()
 
 	log.WithFields(log.Fields{
-		"version":   "v0.0.1",
+		"version":   version,
 		"providers": len(Providers),
 		"events":    EventCount,
-	}).Infof("Loaded providers: %s", ProviderList)
+	}).Info("Loaded providers.")
 
+	log.WithFields(log.Fields{
+		"version": version,
+	}).Info("Loaded Application!")
 	_ = router.Run(":8443")
 }
 
@@ -93,7 +97,7 @@ func setupRoutes(router *gin.Engine) {
 }
 
 func loadProviders() {
-	// Other things to send to:
+	// Other things to send to/from:
 	// Slack, RocketChat, HipChat, Telegram, riot.im, IRC, XMPP
 	// Xenforo 2, IPSuite, MyBB, phpBB, Flarem, Discourse
 	addProvider(structs.Provider{
@@ -113,6 +117,12 @@ func loadProviders() {
 		Events: map[string]structs.Event{
 			"Test": {
 				Handler: sonarr.TestHandler,
+			},
+			"Grab": {
+				Handler: sonarr.GrabHandler,
+			},
+			"Download": {
+				Handler: sonarr.DownloadHandler,
 			},
 		},
 	})
