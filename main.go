@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"git.deploys.io/disweb/gohook/providers/github"
 	"git.deploys.io/disweb/gohook/providers/gitlab"
 	"git.deploys.io/disweb/gohook/providers/sonarr"
 	"git.deploys.io/disweb/gohook/structs"
@@ -127,7 +128,12 @@ func loadProviders() {
 		},
 	})
 	addProvider(structs.Provider{
-		Name: "github",
+		Name:    "github",
+		Header:  "X-GitHub-Event",
+		Handler: github.Handler,
+		Events: map[string]structs.Event{
+			"Push": {},
+		},
 	})
 	/*  addProvider(structs.Provider{
 		Name: "CircleCI",
