@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"git.deploys.io/disweb/gohook/structs"
 	"net/http"
 	"strings"
 )
@@ -15,6 +16,16 @@ func IndexOfAuthor(element string, data []string) int {
 		}
 	}
 	return -1
+}
+
+func EventDetection(data structs.BaseDetection) string {
+	if data.ObjectKind != "" {
+		return data.ObjectKind
+	} else if data.EventType != "" {
+		return data.EventType
+	}
+
+	return ""
 }
 
 func GetBranch(ref string) string {
