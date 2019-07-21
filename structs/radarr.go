@@ -14,22 +14,22 @@ type RadarrGrab struct {
 
 type RadarrDownload struct {
 	RadarrBase
-	Series      RadarrMovie         `json:"movie"`
-	Episodes    []RadarrRemoteMovie `json:"remoteMovie"`
-	EpisodeFile RadarrMovieFile     `json:"movieFile"`
+	Movie       RadarrMovie         `json:"movie"`
+	RemoteMovie []RadarrRemoteMovie `json:"remoteMovie"`
+	MovieFile   RadarrMovieFile     `json:"movieFile"`
 	IsUpgrade   bool                `json:"isUpgrade"`
 }
 
 type RadarrRename struct {
 	RadarrBase
-	Series RadarrMovie `json:"movie"`
+	Movie RadarrMovie `json:"movie"`
 }
 
 type RadarrTest struct {
 	RadarrBase
-	Series   RadarrMovie         `json:"movie"`
-	Episodes []RadarrRemoteMovie `json:"remoteMovie"`
-	Episodes []RadarrRelease     `json:"release"`
+	Series      RadarrMovie         `json:"movie"`
+	RemoteMovie []RadarrRemoteMovie `json:"remoteMovie"`
+	Release     []RadarrRelease     `json:"release"`
 }
 
 type RadarrMovie struct {
