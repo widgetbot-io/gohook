@@ -8,6 +8,9 @@ before_script:
 
 build-master:
   stage: build
+  tags:
+    - disweb
+    - private
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
@@ -16,6 +19,9 @@ build-master:
 
 build:
   stage: build
+  tags:
+    - disweb
+    - private
   script:
     - docker build --pull -t --docker-privileged "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
