@@ -8,9 +8,6 @@ before_script:
 
 build-master:
   stage: build
-  tags:
-    - disweb
-    - private
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
