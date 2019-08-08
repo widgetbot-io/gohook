@@ -39,6 +39,7 @@ func main() {
 
 	log.WithFields(log.Fields{
 		"version": version,
+		"port":    ":8443",
 	}).Info("Loaded Application!")
 	_ = router.Run(":8443")
 }
@@ -106,6 +107,9 @@ func loadProviders() {
 		Events: map[string]structs.Event{
 			"Push Hook": {
 				Handler: gitlab.PushHandler,
+			},
+			"Tag Push Hook": {
+				Handler: gitlab.TagHandler,
 			},
 		},
 	})
