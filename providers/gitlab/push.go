@@ -26,7 +26,7 @@ func PushHandler(c structs.EventContext) error {
 	embed := utils.NewEmbed().
 		SetTitle(fmt.Sprintf("[%s:%s] %s", payload.Project.Name, branch, commit)).
 		SetColour(0x0089ee).
-		SetFooter("Gohook", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png").
+		SetFooter("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png").
 		SetTimestamp().
 		SetURL(payload.Project.WebURL).
 		SetAuthor(payload.UserName, payload.UserAvatar)

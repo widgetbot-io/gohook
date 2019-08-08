@@ -59,9 +59,9 @@ func (e *Embed) SetColour(colour int) *Embed {
 	return e
 }
 
-func (e *Embed) SetFooter(title string, icon string) *Embed {
+func (e *Embed) SetFooter(icon string) *Embed {
 	e.Footer = &discordgo.MessageEmbedFooter{
-		Text:    title,
+		Text:    "GoHook™",
 		IconURL: icon,
 	}
 	return e
