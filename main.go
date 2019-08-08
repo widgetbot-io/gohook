@@ -59,7 +59,7 @@ func setupRoutes(router *gin.Engine) {
 		provider = Providers[providerParam]
 
 		if provider.Name == "" {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Provider not found", "provider": providerParam})
+			c.JSON(http.StatusNotImplemented, gin.H{"error": "Provider not found", "provider": providerParam})
 			return
 		}
 
@@ -72,7 +72,7 @@ func setupRoutes(router *gin.Engine) {
 		}
 
 		if event.Handler == nil {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
+			c.JSON(http.StatusNotImplemented, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
 			return
 		}
 
