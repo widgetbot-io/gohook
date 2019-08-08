@@ -7,7 +7,7 @@ import (
 
 func Handler(c structs.ProviderContext) error {
 	hook, _ := webhook.New()
-	payload, _ := hook.Parse(c.Context.Request, webhook.PushEvents, webhook.TagEvents)
+	payload, _ := hook.Parse(c.Context.Request, webhook.PushEvents, webhook.TagEvents, webhook.IssuesEvents)
 	// event will be found because we find it earlier
 
 	return c.Event.Handler(structs.EventContext{

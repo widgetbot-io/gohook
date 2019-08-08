@@ -111,6 +111,9 @@ func loadProviders() {
 			"Tag Push Hook": {
 				Handler: gitlab.TagHandler,
 			},
+			"Issue Hook": {
+				Handler: gitlab.IssueHandler,
+			},
 		},
 	})
 	addProvider(structs.Provider{
