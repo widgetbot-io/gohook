@@ -114,6 +114,9 @@ func loadProviders() {
 			"Issue Hook": {
 				Handler: gitlab.IssueHandler,
 			},
+			"Note Hook": {
+				Handler: gitlab.NoteHandler,
+			},
 		},
 	})
 	addProvider(structs.Provider{
