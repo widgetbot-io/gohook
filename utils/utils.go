@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"git.deploys.io/disweb/gohook/structs"
-	webhook "gopkg.in/go-playground/webhooks.v5/gitlab"
+	"gopkg.in/go-playground/webhooks.v5/gitlab"
 	"net/http"
 	"strings"
 )
@@ -33,8 +33,40 @@ func GetBranch(ref string) string {
 	return strings.Join(strings.Split(ref, "/")[2:], "/")
 }
 
-func GitlabGroupBy(arrayToGroups []webhook.Commit) map[string][]webhook.Commit {
-	output := make(map[string][]webhook.Commit)
+func GitlabGroupBy(arrayToGroups []gitlab.Commit) map[string][]gitlab.Commit {
+	output := make(map[string][]gitlab.Commit)
+
+	for _, v := range arrayToGroups {
+		output[v.Author.Name] = append(output[v.Author.Name], v)
+	}
+
+	return output
+}
+
+func GithubGroupBy(arrayToGroups []struct {
+	Sha       string `json:"sha"`
+	ID        string `json:"id"`
+	NodeID    string `json:"node_id"`
+	TreeID    string `json:"tree_id"`
+	Distinct  bool   `json:"distinct"`
+	Message   string `json:"message"`
+	Timestamp string `json:"timestamp"`
+	URL       string `json:"url"`
+	Author    struct {
+		Name     string `json:"name"`
+		Email    string `json:"email"`
+		Username string `json:"username"`
+	} `json:"author"`
+	Committer struct {
+		Name     string `json:"name"`
+		Email    string `json:"email"`
+		Username string `json:"username"`
+	} `json:"committer"`
+	Added    []string `json:"added"`
+	Removed  []string `json:"removed"`
+	Modified []string `json:"modified"`
+}) map[string][]structs.GithubCommit { // Yes i know, blame whoever made the github thing non modular.
+	output := make(map[string][]structs.GithubCommit)
 
 	for _, v := range arrayToGroups {
 		output[v.Author.Name] = append(output[v.Author.Name], v)

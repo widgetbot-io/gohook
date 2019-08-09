@@ -31,15 +31,30 @@ func PushHandler(c structs.EventContext) error {
 		SetURL(payload.Repository.HTMLURL).
 		SetAuthor(payload.Pusher.Name, payload.Sender.AvatarURL)
 
-	for _, commit := range payload.Commits {
+	groups := utils.GithubGroupBy(payload.Commits)
+
+	for k := range groups {
+		group := groups[k]
+
 		commitString := ""
-		if strings.HasPrefix(commit.Message, "!") || strings.HasPrefix(commit.Message, "$") {
-			commitString = "This commit message has been marked as private."
-		} else {
-			commitString = commit.Message
+		for _, b := range group {
+			commitMessage := ""
+
+			if strings.HasPrefix(b.Message, "!") || strings.HasPrefix(b.Message, "$") {
+				commitMessage = "This commit message has been marked as private."
+			} else {
+				commitMessage = b.Message
+			}
+
+			commitString += fmt.Sprintf("[%s](%s) - %s \n", b.ID[:7], b.URL, commitMessage)
 		}
 
-		embed.AddField(fmt.Sprintf("Commit from %s", commit.Author.Name), fmt.Sprintf("[`%s`](%s) %s", commit.ID[:7], commit.URL, commitString), false)
+		commit := "Commit"
+		if len(group) > 1 {
+			commit = "Commits"
+		}
+
+		embed.AddField(fmt.Sprintf("%s from %s", commit, k), commitString, false)
 	}
 
 	return utils.SendToDiscord(c.ID, c.Secret, embed)
