@@ -12,7 +12,7 @@ func TagHandler(c structs.EventContext) error {
 	tag := utils.GetBranch(payload.Ref)
 
 	embed := utils.NewEmbed().
-		SetFooter("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png").
+		SetFooter(c.Provider.Logo).
 		SetTimestamp().
 		SetURL(payload.Project.WebURL).
 		SetAuthor(payload.UserName, payload.UserAvatar)

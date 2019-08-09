@@ -13,7 +13,7 @@ func NoteHandler(c structs.EventContext) error {
 	payload := c.Payload.(webhook.CommentEventPayload)
 
 	embed := utils.NewEmbed().
-		SetFooter("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png").
+		SetFooter(c.Provider.Logo).
 		SetColour(0xff9700).
 		SetTimestamp().
 		SetURL(payload.Project.WebURL).

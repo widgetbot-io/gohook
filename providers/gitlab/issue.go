@@ -13,7 +13,7 @@ func IssueHandler(c structs.EventContext) error {
 
 	embed := utils.NewEmbed().
 		SetTitle(fmt.Sprintf("%s issue #%d on %s", strings.Title(payload.ObjectAttributes.State), payload.ObjectAttributes.IID, payload.Project.Name)).
-		SetFooter("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png").
+		SetFooter(c.Provider.Logo).
 		SetURL(fmt.Sprintf("%s/issues/%d", payload.Project.WebURL, payload.ObjectAttributes.IID)).
 		SetAuthor(payload.User.Name, payload.User.AvatarURL).
 		SetTimestamp()

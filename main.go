@@ -102,6 +102,7 @@ func loadProviders() {
 	// Xenforo 2, IPSuite, MyBB, phpBB, Flarem, Discourse
 	addProvider(structs.Provider{
 		Name:    "gitlab",
+		Logo:    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png",
 		Header:  "X-Gitlab-Event",
 		Handler: gitlab.Handler,
 		Events: map[string]structs.Event{
@@ -121,6 +122,7 @@ func loadProviders() {
 	})
 	addProvider(structs.Provider{
 		Name:      "sonarr",
+		Logo:      "https://avatars1.githubusercontent.com/u/1082903?s=400&v=4",
 		EventName: "eventType",
 		Handler:   sonarr.Handler,
 		Events: map[string]structs.Event{
@@ -137,6 +139,7 @@ func loadProviders() {
 	})
 	addProvider(structs.Provider{
 		Name:    "github",
+		Logo:    "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
 		Header:  "X-GitHub-Event",
 		Handler: github.Handler,
 		Events: map[string]structs.Event{
@@ -150,6 +153,7 @@ func loadProviders() {
 	})
 	addProvider(structs.Provider{
 		Name: "Radarr",
+		Logo: "",
 	})
 	/*  addProvider(structs.Provider{
 		Name: "CircleCI",

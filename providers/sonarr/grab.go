@@ -11,6 +11,7 @@ func GrabHandler(c structs.EventContext) error {
 
 	embed := utils.NewEmbed().
 		SetColour(utils.RandomColor()).
+		SetFooter(c.Provider.Logo).
 		SetTimestamp()
 
 	if len(payload.Episodes) <= 1 {

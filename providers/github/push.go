@@ -26,7 +26,7 @@ func PushHandler(c structs.EventContext) error {
 	embed := utils.NewEmbed().
 		SetTitle(fmt.Sprintf("[%s:%s] %s", payload.Repository.Name, branch, commit)).
 		SetColour(0x0089ee).
-		SetFooter("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png").
+		SetFooter(c.Provider.Logo).
 		SetTimestamp().
 		SetURL(payload.Repository.HTMLURL).
 		SetAuthor(payload.Pusher.Name, payload.Sender.AvatarURL)

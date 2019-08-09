@@ -12,6 +12,7 @@ func PingHandler(c structs.EventContext) error {
 	embed := utils.NewEmbed().
 		SetTitle("Ping event recieved!").
 		SetAuthor(payload.Sender.Login, payload.Sender.AvatarURL).
+		SetFooter(c.Provider.Logo).
 		SetDescription("Webhook successfully linked to repository.").
 		SetURL(payload.Repository.HTMLURL).
 		SetColour(utils.RandomColor()).

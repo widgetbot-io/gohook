@@ -8,6 +8,7 @@ type Event struct {
 
 type Provider struct {
 	Name      string
+	Logo      string
 	Header    string
 	EventName string
 	Events    map[string]Event
