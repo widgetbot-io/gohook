@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"git.deploys.io/disweb/gohook/structs"
+	webhook "gopkg.in/go-playground/webhooks.v5/gitlab"
 	"net/http"
 	"strings"
 )
@@ -32,8 +33,14 @@ func GetBranch(ref string) string {
 	return strings.Join(strings.Split(ref, "/")[2:], "/")
 }
 
-func GroupBy(arrayToGroups []string, key string, key2 string) []string {
-	return []string{""}
+func GitlabGroupBy(arrayToGroups []webhook.Commit) map[string][]webhook.Commit {
+	output := make(map[string][]webhook.Commit)
+
+	for _, v := range arrayToGroups {
+		output[v.Author.Name] = append(output[v.Author.Name], v)
+	}
+
+	return output
 }
 
 type Embeds struct {

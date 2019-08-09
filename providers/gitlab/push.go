@@ -31,29 +31,30 @@ func PushHandler(c structs.EventContext) error {
 		SetURL(payload.Project.WebURL).
 		SetAuthor(payload.UserName, payload.UserAvatar)
 
-	// var reduced []webhook.Commit
-	// var authors []string
+	groups := utils.GitlabGroupBy(payload.Commits)
 
-	/* for _, commit := range payload.Commits {
-		if utils.IndexOfAuthor(commit.Author.Name, authors) == -1 {
-			authors = append(authors, commit.Author.Name)
-		}
-		for _, author := range authors {
-			if commit.Author.Name == author {
+	for k := range groups {
+		group := groups[k]
 
-			}
-		}
-	} */
-
-	for _, commit := range payload.Commits {
 		commitString := ""
-		if strings.HasPrefix(commit.Message, "!") || strings.HasPrefix(commit.Message, "$") {
-			commitString = "This commit message has been marked as private."
-		} else {
-			commitString = commit.Message
+		for _, b := range group {
+			commitMessage := ""
+
+			if strings.HasPrefix(b.Message, "!") || strings.HasPrefix(b.Message, "$") {
+				commitMessage = "This commit message has been marked as private."
+			} else {
+				commitMessage = b.Message
+			}
+
+			commitString += fmt.Sprintf("[%s](%s) - %s \n", b.ID[:7], b.URL, commitMessage)
 		}
 
-		embed.AddField(fmt.Sprintf("Commit from %s", commit.Author.Name), fmt.Sprintf("[`%s`](%s) %s", commit.ID[:7], commit.URL, commitString), false)
+		commit := "Commit"
+		if len(group) > 1 {
+			commit = "Commits"
+		}
+
+		embed.AddField(fmt.Sprintf("%s from %s", commit, k), commitString, false)
 	}
 
 	return utils.SendToDiscord(c.ID, c.Secret, embed)
