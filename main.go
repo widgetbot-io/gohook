@@ -1,12 +1,16 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"git.deploys.io/disweb/gohook/providers/github"
 	"git.deploys.io/disweb/gohook/providers/gitlab"
 	"git.deploys.io/disweb/gohook/providers/sonarr"
 	"git.deploys.io/disweb/gohook/structs"
+	"git.deploys.io/disweb/gohook/utils"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -49,10 +53,11 @@ func setupRoutes(router *gin.Engine) {
 		var event structs.Event
 		var eventName string
 		var provider structs.Provider
-		// var BaseDetection structs.BaseDetection
+		var BaseDetection structs.BaseDetection
 
-		// payload, _ := utils.Parse(c.Request)
-		// _ = json.Unmarshal([]byte(payload), &BaseDetection)
+		payload, _ := utils.Parse(c.Request.Body)
+		c.Request.Body = ioutil.NopCloser(bytes.NewReader(payload))
+		_ = json.Unmarshal([]byte(payload), &BaseDetection)
 		idParam := c.Param("ID")
 		secretParam := c.Param("Secret")
 		providerParam := c.Param("Provider")
@@ -67,8 +72,8 @@ func setupRoutes(router *gin.Engine) {
 			event = provider.Events[c.GetHeader(provider.Header)]
 			eventName = c.GetHeader(provider.Header)
 		} else {
-			// event = provider.Events[utils.EventDetection(BaseDetection)]
-			// eventName = utils.EventDetection(BaseDetection)
+			event = provider.Events[utils.EventDetection(BaseDetection)]
+			eventName = utils.EventDetection(BaseDetection)
 		}
 
 		if event.Handler == nil {
@@ -81,8 +86,8 @@ func setupRoutes(router *gin.Engine) {
 			Secret:   secretParam,
 			Event:    event,
 			Provider: provider,
-			// Payload:  payload,
-			Context: c,
+			Payload:  payload,
+			Context:  c,
 		})
 
 		if err != nil {

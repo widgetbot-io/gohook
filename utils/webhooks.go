@@ -3,16 +3,15 @@ package utils
 import (
 	"io"
 	"io/ioutil"
-	"net/http"
 )
 
-func Parse(r *http.Request) ([]byte, error) {
+func Parse(body io.ReadCloser) ([]byte, error) {
 	defer func() {
-		_, _ = io.Copy(ioutil.Discard, r.Body)
-		_ = r.Body.Close()
+		_, _ = io.Copy(ioutil.Discard, body)
+		_ = body.Close()
 	}()
 
-	payload, _ := ioutil.ReadAll(r.Body)
+	payload, _ := ioutil.ReadAll(body)
 
 	return payload, nil
 }

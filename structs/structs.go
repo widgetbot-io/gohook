@@ -1,6 +1,9 @@
 package structs
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"io"
+)
 
 type Event struct {
 	Handler func(c EventContext) error
@@ -21,6 +24,7 @@ type ProviderContext struct {
 	Provider Provider
 	Event    Event
 	Context  *gin.Context
+	Body     io.ReadCloser
 	Payload  []byte
 }
 
