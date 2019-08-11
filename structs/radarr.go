@@ -7,9 +7,9 @@ type RadarrBase struct {
 // Event structs
 type RadarrGrab struct {
 	RadarrBase
-	Series   RadarrMovie         `json:"movie"`
-	Episodes []RadarrRemoteMovie `json:"remoteMovie"`
-	Release  RadarrRelease       `json:"release"`
+	Movie       RadarrMovie         `json:"movie"`
+	RemoteMovie []RadarrRemoteMovie `json:"remoteMovie"`
+	Release     RadarrRelease       `json:"release"`
 }
 
 type RadarrDownload struct {
@@ -27,7 +27,7 @@ type RadarrRename struct {
 
 type RadarrTest struct {
 	RadarrBase
-	Series      RadarrMovie         `json:"movie"`
+	Movie       RadarrMovie         `json:"movie"`
 	RemoteMovie []RadarrRemoteMovie `json:"remoteMovie"`
 	Release     []RadarrRelease     `json:"release"`
 }
