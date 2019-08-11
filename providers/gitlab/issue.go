@@ -39,5 +39,5 @@ func IssueHandler(c structs.EventContext) error {
 		}
 	}
 
-	return utils.SendToDiscord(c.ID, c.Secret, embed)
+	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }

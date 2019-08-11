@@ -47,5 +47,5 @@ func NoteHandler(c structs.EventContext) error {
 	}
 	embed.SetTitle(fmt.Sprintf("[%s] - Commented on %s", payload.Project.Name, title))
 
-	return utils.SendToDiscord(c.ID, c.Secret, embed)
+	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }

@@ -29,6 +29,11 @@ func EventDetection(data structs.BaseDetection) string {
 	return ""
 }
 
+func HasOptions(options string, option string) bool {
+	// P = Private Git
+	return strings.Contains(options, option)
+}
+
 func GetBranch(ref string) string {
 	return strings.Join(strings.Split(ref, "/")[2:], "/")
 }
@@ -79,7 +84,11 @@ type Embeds struct {
 	Embeds []*Embed `json:"embeds"`
 }
 
-func SendToDiscord(ID string, secret string, embed *Embed) error {
+func SendToDiscord(ID string, secret string, embed *Embed, options string) error {
+	if HasOptions(options, "P") {
+		embed.URL = ""
+	}
+
 	embeds := Embeds{}
 	embeds.Embeds = []*Embed{embed}
 

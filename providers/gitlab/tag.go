@@ -25,5 +25,5 @@ func TagHandler(c structs.EventContext) error {
 			SetColour(0xff0000)
 	}
 
-	return utils.SendToDiscord(c.ID, c.Secret, embed)
+	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }

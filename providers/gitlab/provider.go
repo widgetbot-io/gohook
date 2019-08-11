@@ -13,6 +13,7 @@ func Handler(c structs.ProviderContext) error {
 	return c.Event.Handler(structs.EventContext{
 		ID:       c.ID,
 		Secret:   c.Secret,
+		Options:  c.Options,
 		Event:    c.Event,
 		Provider: c.Provider,
 		Payload:  payload,

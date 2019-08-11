@@ -24,6 +24,7 @@ type ProviderContext struct {
 	Provider Provider
 	Event    Event
 	Context  *gin.Context
+	Options  string
 	Body     io.ReadCloser
 	Payload  []byte
 }
@@ -31,6 +32,7 @@ type ProviderContext struct {
 type EventContext struct {
 	ID       string
 	Secret   string
+	Options  string
 	Provider Provider
 	Event    Event
 	Context  *gin.Context

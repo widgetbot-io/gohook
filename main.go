@@ -12,6 +12,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 var EventCount int
@@ -86,6 +87,63 @@ func setupRoutes(router *gin.Engine) {
 			Secret:   secretParam,
 			Event:    event,
 			Provider: provider,
+			Options:  "",
+			Payload:  payload,
+			Context:  c,
+		})
+
+		if err != nil {
+			log.Error(err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "An internal server error occurred when handling the event.", "provider": providerParam, "event": c.GetHeader(provider.Header)})
+			return
+		}
+
+		c.JSON(200, gin.H{"message": "Event successfully handled"})
+		return
+	})
+	router.POST("/api/hook/:ID/:Secret/:Provider/*Options", func(c *gin.Context) {
+		options := c.Param("Options")
+		if strings.HasPrefix(options, "/") {
+			options = options[1:]
+		}
+
+		var event structs.Event
+		var eventName string
+		var provider structs.Provider
+		var BaseDetection structs.BaseDetection
+
+		payload, _ := utils.Parse(c.Request.Body)
+		c.Request.Body = ioutil.NopCloser(bytes.NewReader(payload))
+		_ = json.Unmarshal([]byte(payload), &BaseDetection)
+		idParam := c.Param("ID")
+		secretParam := c.Param("Secret")
+		providerParam := c.Param("Provider")
+		provider = Providers[providerParam]
+
+		if provider.Name == "" {
+			c.JSON(http.StatusNotImplemented, gin.H{"error": "Provider not found", "provider": providerParam})
+			return
+		}
+
+		if provider.Header != "" {
+			event = provider.Events[c.GetHeader(provider.Header)]
+			eventName = c.GetHeader(provider.Header)
+		} else {
+			event = provider.Events[utils.EventDetection(BaseDetection)]
+			eventName = utils.EventDetection(BaseDetection)
+		}
+
+		if event.Handler == nil {
+			c.JSON(http.StatusNotImplemented, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
+			return
+		}
+
+		err := provider.Handler(structs.ProviderContext{
+			ID:       idParam,
+			Secret:   secretParam,
+			Event:    event,
+			Provider: provider,
+			Options:  options,
 			Payload:  payload,
 			Context:  c,
 		})

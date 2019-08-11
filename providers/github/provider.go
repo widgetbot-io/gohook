@@ -14,6 +14,7 @@ func Handler(c structs.ProviderContext) error {
 		ID:       c.ID,
 		Secret:   c.Secret,
 		Event:    c.Event,
+		Options:  c.Options,
 		Provider: c.Provider,
 		Payload:  payload,
 	})

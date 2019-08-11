@@ -16,5 +16,5 @@ func DownloadHandler(c structs.EventContext) error {
 		SetColour(utils.RandomColor()).
 		SetTimestamp()
 
-	return utils.SendToDiscord(c.ID, c.Secret, embed)
+	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }

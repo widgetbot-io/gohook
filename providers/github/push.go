@@ -57,5 +57,5 @@ func PushHandler(c structs.EventContext) error {
 		embed.AddField(fmt.Sprintf("%s from %s", commit, k), commitString, false)
 	}
 
-	return utils.SendToDiscord(c.ID, c.Secret, embed)
+	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }

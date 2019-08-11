@@ -22,5 +22,5 @@ func GrabHandler(c structs.EventContext) error {
 		return nil
 	}
 
-	return utils.SendToDiscord(c.ID, c.Secret, embed)
+	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }
