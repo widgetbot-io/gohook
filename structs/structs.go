@@ -67,3 +67,9 @@ type GithubCommit struct {
 	Removed  []string `json:"removed"`
 	Modified []string `json:"modified"`
 }
+
+type EventOption string
+
+const (
+	P EventOption = "PRIVATE_GIT"
+)
