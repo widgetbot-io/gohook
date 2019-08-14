@@ -6,7 +6,7 @@ import (
 )
 
 func GrabHandler(c structs.EventContext) error {
-	payload := c.Payload.(structs.SonarrTest)
+	payload := c.Payload.(structs.SonarrGrab)
 
 	embed := utils.NewEmbed().
 		SetColour(utils.RandomColor()).
