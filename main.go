@@ -276,6 +276,20 @@ func loadProviders() {
 			"watch":                          {},
 		},
 	})
+	addProvider(structs.Provider{
+		Name:      "Plex",
+		EventName: "event",
+		Events: map[string]structs.Event{
+			"library.on.deck": {},
+			"library.new":     {},
+			"media.pause":     {},
+			"media.play":      {},
+			"media.rate":      {},
+			"media.resume":    {},
+			"media.scrobble":  {},
+			"media.stop":      {},
+		},
+	})
 	/*  addProvider(structs.Provider{
 		Name: "CircleCI",
 	})
@@ -292,19 +306,9 @@ func loadProviders() {
 		Name: "BitBucket",
 	})
 	addProvider(structs.Provider{
-		Name: "Gitlab",
-	})
-	addProvider(structs.Provider{
-		Name: "Gitlab",
-	})
-
-
-	addProvider(structs.Provider{
 		Name: "Ombi",
 	})
-	addProvider(structs.Provider{
-		Name: "Plex",
-	}) */
+	*/
 }
 
 func addProvider(info structs.Provider) {
