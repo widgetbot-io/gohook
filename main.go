@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"git.deploys.io/disweb/gohook/providers/github"
 	"git.deploys.io/disweb/gohook/providers/gitlab"
+	"git.deploys.io/disweb/gohook/providers/radarr"
 	"git.deploys.io/disweb/gohook/providers/sonarr"
 	"git.deploys.io/disweb/gohook/structs"
 	"git.deploys.io/disweb/gohook/utils"
@@ -201,6 +202,23 @@ func loadProviders() {
 		},
 	})
 	addProvider(structs.Provider{
+		Name:      "radarr",
+		Logo:      "https://opencollective-production.s3-us-west-1.amazonaws.com/a8160b50-2b5d-11e8-b4a5-2f63677431ab.png",
+		EventName: "eventType",
+		Handler:   radarr.Handler,
+		Events: map[string]structs.Event{
+			"Test": {
+				Handler: radarr.TestHandler,
+			},
+			"Grab": {
+				Handler: radarr.GrabHandler,
+			},
+			"Download": {
+				Handler: radarr.DownloadHandler,
+			},
+		},
+	})
+	addProvider(structs.Provider{
 		Name:    "github",
 		Logo:    "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
 		Header:  "X-GitHub-Event",
@@ -213,10 +231,6 @@ func loadProviders() {
 				Handler: github.PushHandler,
 			},
 		},
-	})
-	addProvider(structs.Provider{
-		Name: "Radarr",
-		Logo: "",
 	})
 	/*  addProvider(structs.Provider{
 		Name: "CircleCI",

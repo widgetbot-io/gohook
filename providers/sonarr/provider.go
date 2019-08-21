@@ -6,7 +6,7 @@ import (
 )
 
 func Handler(c structs.ProviderContext) error {
-	var TestPayload structs.SonarrTest
+	var TestPayload interface{}
 
 	_ = json.Unmarshal([]byte(c.Payload), &TestPayload)
 

@@ -14,7 +14,7 @@ func GrabHandler(c structs.EventContext) error {
 		SetTimestamp()
 
 	if len(payload.Episodes) <= 1 {
-		embed.SetAuthor("Episode Downloading!", "https://avatars1.githubusercontent.com/u/1082903?s=400&v=4")
+		embed.SetAuthor("Episode Downloading!", c.Provider.Logo)
 		embed.SetTitle(utils.FormatSonarrTitle(payload.Series, payload.Episodes[0]))
 		embed.AddField("Quality", payload.Episodes[0].Quality, true)
 		embed.AddField("Aired On", payload.Episodes[0].AirDate, true)
