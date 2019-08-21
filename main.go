@@ -124,6 +124,8 @@ func setupRoutes(router *gin.Engine) {
 		if provider.Name == "" {
 			c.JSON(http.StatusNotImplemented, gin.H{"error": "Provider not found", "provider": providerParam})
 			return
+		} else if provider.Handler == nil {
+			c.JSON(http.StatusNotImplemented, gin.H{"error": "Provider not implemented", "provider": providerParam})
 		}
 
 		if provider.Header != "" {
@@ -182,6 +184,10 @@ func loadProviders() {
 			"Note Hook": {
 				Handler: gitlab.NoteHandler,
 			},
+			"Merge Request Hook": {},
+			"Wiki Page Hook":     {},
+			"Pipeline Hook":      {},
+			"Job Hook":           {},
 		},
 	})
 	addProvider(structs.Provider{
