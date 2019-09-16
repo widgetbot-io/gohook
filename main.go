@@ -184,9 +184,14 @@ func loadProviders() {
 			"Note Hook": {
 				Handler: gitlab.NoteHandler,
 			},
+			"System Hook": {
+				Handler: gitlab.SystemHandler,
+			},
+			"Pipeline Hook": {
+				Handler: gitlab.PipelineHandler,
+			},
 			"Merge Request Hook": {},
 			"Wiki Page Hook":     {},
-			"Pipeline Hook":      {},
 			"Job Hook":           {},
 		},
 	})
