@@ -1,4 +1,4 @@
-module git.deploys.io/disweb/gohook
+module lab.venix.dev/disweb/gohook
 
 go 1.12
 

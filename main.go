@@ -3,15 +3,15 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"git.deploys.io/disweb/gohook/providers/github"
-	"git.deploys.io/disweb/gohook/providers/gitlab"
-	"git.deploys.io/disweb/gohook/providers/radarr"
-	"git.deploys.io/disweb/gohook/providers/sonarr"
-	"git.deploys.io/disweb/gohook/structs"
-	"git.deploys.io/disweb/gohook/utils"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
+	"lab.venix.dev/disweb/gohook/providers/github"
+	"lab.venix.dev/disweb/gohook/providers/gitlab"
+	"lab.venix.dev/disweb/gohook/providers/radarr"
+	"lab.venix.dev/disweb/gohook/providers/sonarr"
+	"lab.venix.dev/disweb/gohook/structs"
+	"lab.venix.dev/disweb/gohook/utils"
 	"net/http"
 	"strings"
 )
@@ -84,13 +84,14 @@ func setupRoutes(router *gin.Engine) {
 		}
 
 		err := provider.Handler(structs.ProviderContext{
-			ID:       idParam,
-			Secret:   secretParam,
-			Event:    event,
-			Provider: provider,
-			Options:  "",
-			Payload:  payload,
-			Context:  c,
+			ID:        idParam,
+			Secret:    secretParam,
+			Event:     event,
+			EventName: eventName,
+			Provider:  provider,
+			Options:   "",
+			Payload:   payload,
+			Context:   c,
 		})
 
 		if err != nil {
@@ -142,13 +143,14 @@ func setupRoutes(router *gin.Engine) {
 		}
 
 		err := provider.Handler(structs.ProviderContext{
-			ID:       idParam,
-			Secret:   secretParam,
-			Event:    event,
-			Provider: provider,
-			Options:  options,
-			Payload:  payload,
-			Context:  c,
+			ID:        idParam,
+			Secret:    secretParam,
+			Event:     event,
+			EventName: eventName,
+			Provider:  provider,
+			Options:   options,
+			Payload:   payload,
+			Context:   c,
 		})
 
 		if err != nil {

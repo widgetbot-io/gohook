@@ -2,13 +2,12 @@ package sonarr
 
 import (
 	"encoding/json"
-	"git.deploys.io/disweb/gohook/structs"
+	"fmt"
+	"lab.venix.dev/disweb/gohook/structs"
 )
 
 func Handler(c structs.ProviderContext) error {
-	var TestPayload interface{}
-
-	_ = json.Unmarshal([]byte(c.Payload), &TestPayload)
+	payload, _ := eventParsing(c.EventName, c.Payload)
 
 	return c.Event.Handler(structs.EventContext{
 		ID:       c.ID,
@@ -16,6 +15,25 @@ func Handler(c structs.ProviderContext) error {
 		Options:  c.Options,
 		Event:    c.Event,
 		Provider: c.Provider,
-		Payload:  TestPayload,
+		Payload:  payload,
 	})
+}
+
+func eventParsing(event string, payload []byte) (interface{}, error) {
+	switch event {
+	case "Test":
+		var pl structs.SonarrTest
+		err := json.Unmarshal([]byte(payload), &pl)
+		return pl, err
+	case "Grab":
+		var pl structs.SonarrGrab
+		err := json.Unmarshal([]byte(payload), &pl)
+		return pl, err
+	case "Download":
+		var pl structs.SonarrDownload
+		err := json.Unmarshal([]byte(payload), &pl)
+		return pl, err
+	default:
+		return nil, fmt.Errorf("unknown event %s", event)
+	}
 }

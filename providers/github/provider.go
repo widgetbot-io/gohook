@@ -1,8 +1,8 @@
 package github
 
 import (
-	"git.deploys.io/disweb/gohook/structs"
 	webhook "gopkg.in/go-playground/webhooks.v5/github"
+	"lab.venix.dev/disweb/gohook/structs"
 )
 
 func Handler(c structs.ProviderContext) error {

@@ -6,6 +6,7 @@ import (
 )
 
 type Event struct {
+	Name    string
 	Handler func(c EventContext) error
 }
 
@@ -19,14 +20,15 @@ type Provider struct {
 }
 
 type ProviderContext struct {
-	ID       string
-	Secret   string
-	Provider Provider
-	Event    Event
-	Context  *gin.Context
-	Options  string
-	Body     io.ReadCloser
-	Payload  []byte
+	ID        string
+	Secret    string
+	Provider  Provider
+	EventName string
+	Event     Event
+	Context   *gin.Context
+	Options   string
+	Body      io.ReadCloser
+	Payload   []byte
 }
 
 type EventContext struct {

@@ -1,11 +1,13 @@
 package sonarr
 
 import (
-	"git.deploys.io/disweb/gohook/structs"
-	"git.deploys.io/disweb/gohook/utils"
+	"github.com/sirupsen/logrus"
+	"lab.venix.dev/disweb/gohook/structs"
+	"lab.venix.dev/disweb/gohook/utils"
 )
 
 func TestHandler(c structs.EventContext) error {
+	logrus.Info(c.Payload)
 	payload := c.Payload.(structs.SonarrTest)
 
 	embed := utils.NewEmbed().

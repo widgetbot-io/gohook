@@ -1,8 +1,8 @@
 package sonarr
 
 import (
-	"git.deploys.io/disweb/gohook/structs"
-	"git.deploys.io/disweb/gohook/utils"
+	"lab.venix.dev/disweb/gohook/structs"
+	"lab.venix.dev/disweb/gohook/utils"
 )
 
 func DownloadHandler(c structs.EventContext) error {

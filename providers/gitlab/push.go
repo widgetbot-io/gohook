@@ -2,9 +2,9 @@ package gitlab
 
 import (
 	"fmt"
-	"git.deploys.io/disweb/gohook/structs"
-	"git.deploys.io/disweb/gohook/utils"
 	webhook "gopkg.in/go-playground/webhooks.v5/gitlab"
+	"lab.venix.dev/disweb/gohook/structs"
+	"lab.venix.dev/disweb/gohook/utils"
 	"strings"
 )
 
