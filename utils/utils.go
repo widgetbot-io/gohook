@@ -115,5 +115,5 @@ func FormatSonarrTitle(series structs.SonarrSeries, episode structs.SonarrEpisod
 		s = fmt.Sprintf("0%d", episode.SeasonNumber)
 	}
 
-	return fmt.Sprintf("[%s] S%sE%s - %s", series.Title, e, s, episode.Title)
+	return fmt.Sprintf("[%s] S%sE%s - %s", series.Title, s, e, episode.Title)
 }
