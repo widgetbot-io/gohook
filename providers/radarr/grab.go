@@ -13,7 +13,7 @@ func GrabHandler(c structs.EventContext) error {
 		SetFooter(c.Provider.Logo).
 		SetTimestamp()
 
-	embed.SetAuthor("Film Downloading!", c.Provider.Logo)
+	embed.SetAuthor("Film Downloading", c.Provider.Logo)
 	embed.SetTitle(payload.Movie.Title)
 	embed.AddField("Quality", payload.Release.Quality, true)
 	embed.AddField("Released on", payload.Movie.ReleaseDate, true)
