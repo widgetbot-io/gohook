@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Pipeline support for gitlab">
+    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/github/ping.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/github/ping.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/github/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/github/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/github/push.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/github/push.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/gitlab/example.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/example.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/gitlab/issue.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/issue.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/gitlab/note.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/note.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/gitlab/pipeline.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/pipeline.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/providers/gitlab/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/gitlab/push.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/push.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/gitlab/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/radarr/download.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/radarr/download.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/radarr/grab.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/radarr/grab.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/radarr/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/radarr/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/radarr/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/radarr/test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/sonarr/download.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/sonarr/download.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/sonarr/grab.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/sonarr/grab.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/sonarr/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/sonarr/provider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/sonarr/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/sonarr/test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/structs/structs.go" beforeDir="false" afterPath="$PROJECT_DIR$/structs/structs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +33,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="C:\Go" />
+  <component name="GOROOT" path="C:\Users\Daave\sdk\go1.13.4" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -70,7 +50,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="E:/Thriving Ventures/!MonoSuite/logging" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/providers/gitlab" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -81,6 +61,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\DisWeb\gohook\providers\gitlab" />
       <recent name="E:\DisWeb\gohook\providers\gitlab" />
       <recent name="E:\DisWeb\gohook\providers\github" />
       <recent name="E:\DisWeb\gohook\providers\sonarr" />
@@ -131,10 +112,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Start grab event" />
-    <MESSAGE value="Prepare for github events" />
-    <MESSAGE value="Github events" />
-    <MESSAGE value="Remove duplicate" />
     <MESSAGE value="Temporarily disable event grabbing from body" />
     <MESSAGE value="GitHub push" />
     <MESSAGE value="Tag event, add port to logs" />
@@ -156,7 +133,11 @@
     <MESSAGE value="Start cooler option stuff" />
     <MESSAGE value="Actually implement download event and change structs" />
     <MESSAGE value="Pipeline support for gitlab" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pipeline support for gitlab" />
+    <MESSAGE value="Add switch cases for sonarr &amp; radarr. A few misc. touches" />
+    <MESSAGE value="System handler for gitlab" />
+    <MESSAGE value="i hate hooks" />
+    <MESSAGE value="Finally fix the reversed numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally fix the reversed numbers" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

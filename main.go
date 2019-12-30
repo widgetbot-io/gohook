@@ -192,9 +192,11 @@ func loadProviders() {
 			"Pipeline Hook": {
 				Handler: gitlab.PipelineHandler,
 			},
+			"Job Hook": {
+				Handler: gitlab.JobHandler,
+			},
 			"Merge Request Hook": {},
 			"Wiki Page Hook":     {},
-			"Job Hook":           {},
 		},
 	})
 	addProvider(structs.Provider{
