@@ -7,8 +7,8 @@
 
 ##To create the URL
 
-Syntax:  `https://gohook.forbid.fun/api/hook/WEBHOOK_ID/WEBHOOK_SECRET/PROVIDER` <br>
-Example: `https://gohook.forbid.fun/api/hook/609167995586367897/icEYy1dVrILdsrxq7kKQXYDPxyY-RvmkjW5TcztvFOF-wjE0sLJfdODFHJ4hMMKbBkH3/gitlab`
+Syntax:  `https://go.venix.dev/api/hook/WEBHOOK_ID/WEBHOOK_SECRET/PROVIDER` <br>
+Example: `https://go.venix.dev/api/hook/609167995586367897/icEYy1dVrILdsrxq7kKQXYDPxyY-RvmkjW5TcztvFOF-wjE0sLJfdODFHJ4hMMKbBkH3/gitlab`
 
 ## Providers
 
