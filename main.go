@@ -289,7 +289,7 @@ func loadProviders() {
 		Name:      "Plex",
 		EventName: "event",
 		Events: map[string]structs.Event{
-			"library.on.deck": {},
+			"library.on.deck": {}, // TODO: Find documentation for these events
 			"library.new":     {},
 			"media.pause":     {},
 			"media.play":      {},
