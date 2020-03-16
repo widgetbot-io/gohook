@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"gopkg.in/go-playground/webhooks.v5/gitlab"
-	"lab.venix.dev/disweb/gohook/structs"
+	"lab.venix.dev/widgetbot/gohook/structs"
 	"net/http"
 	"strings"
 )

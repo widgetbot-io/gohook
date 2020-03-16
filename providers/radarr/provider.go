@@ -3,7 +3,7 @@ package radarr
 import (
 	"encoding/json"
 	"fmt"
-	"lab.venix.dev/disweb/gohook/structs"
+	"lab.venix.dev/widgetbot/gohook/structs"
 )
 
 func Handler(c structs.ProviderContext) error {

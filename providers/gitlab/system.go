@@ -2,7 +2,7 @@ package gitlab
 
 import (
 	webhook "gopkg.in/go-playground/webhooks.v5/gitlab"
-	"lab.venix.dev/disweb/gohook/structs"
+	"lab.venix.dev/widgetbot/gohook/structs"
 )
 
 func SystemHandler(c structs.EventContext) error {

@@ -67,6 +67,14 @@ func (e *Embed) SetFooter(icon string) *Embed {
 	return e
 }
 
+func (e *Embed) SetFooterText(text string) *Embed {
+	e.Footer = &discordgo.MessageEmbedFooter{
+		Text:    text,
+		IconURL: e.Footer.IconURL,
+	}
+	return e
+}
+
 func (e *Embed) SetImage(url string) *Embed {
 	e.Image = &discordgo.MessageEmbedImage{
 		URL: url,

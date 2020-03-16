@@ -1,7 +1,4 @@
-image: docker:18.09.8
-
-services:
-  - docker:18.09.8-dind
+image: docker:stable
 
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
@@ -16,9 +13,6 @@ build-master:
 
 build:
   stage: build
-  tags:
-    - disweb
-    - private
   script:
     - docker build --pull -t --docker-privileged "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
