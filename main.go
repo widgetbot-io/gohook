@@ -245,6 +245,9 @@ func loadProviders() {
 			"push": {
 				Handler: github.PushHandler,
 			},
+			"repository": {
+				Handler: github.RepositoryHandler,
+			},
 			"create":                         {},
 			"delete":                         {},
 			"deployment":                     {},
@@ -274,7 +277,6 @@ func loadProviders() {
 			"registry_package":               {},
 			"release":                        {},
 			"repository_dispatch":            {},
-			"repository":                     {},
 			"repository_import":              {},
 			"repository_vulnerability_alert": {},
 			"security_advisory":              {},
