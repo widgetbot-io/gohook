@@ -8,12 +8,39 @@ import (
 	"strings"
 )
 
+func BranchHandler(c structs.EventContext, new bool) error {
+	payload := c.Payload.(webhook.PushPayload)
+	branch := utils.GetBranch(payload.Ref)
+
+	embed := utils.NewEmbed().
+		SetFooter(c.Provider.Logo).
+		SetTimestamp().
+		SetURL(payload.Repository.HTMLURL).
+		SetAuthor(payload.Pusher.Name, payload.Sender.AvatarURL)
+
+	if new {
+		embed.SetTitle(fmt.Sprintf("Branch created: %s", branch)).
+			SetColour(0x00ff00)
+	} else {
+		embed.SetTitle(fmt.Sprintf("Branch deleted: %s", branch)).
+			SetColour(0xff0000)
+	}
+
+	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
+}
+
 func PushHandler(c structs.EventContext) error {
 	payload := c.Payload.(webhook.PushPayload)
 	branch := utils.GetBranch(payload.Ref)
 
 	if strings.HasPrefix(branch, "!") || strings.HasPrefix(branch, "$") {
 		return nil
+	}
+
+	if payload.Before == "0000000000000000000000000000000000000000" {
+		return BranchHandler(c, true)
+	} else if payload.After == "0000000000000000000000000000000000000000" {
+		return BranchHandler(c, false)
 	}
 
 	commit := ""
