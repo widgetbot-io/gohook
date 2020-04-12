@@ -44,6 +44,11 @@ func PipelineHandler(c structs.EventContext) error {
 			embed.SetColour(0x00ff27)
 			embed.AddField(fmt.Sprintf("Pipeline #%s", payload.ObjectAttributes.Ref), fmt.Sprintf("Pipeline %s in %d seconds.", status, payload.ObjectAttributes.Duration), false)
 		}
+
+	default: 
+		{
+			return nil
+		}
 	}
 
 	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
