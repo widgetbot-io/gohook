@@ -1,8 +1,8 @@
 package gitlab
 
 import (
-	webhook "gopkg.in/go-playground/webhooks.v5/gitlab"
 	"lab.venix.dev/widgetbot/gohook/structs"
+	webhook "lab.venix.dev/widgetbot/gohook/webhook/gitlab"
 )
 
 func Handler(c structs.ProviderContext) error {

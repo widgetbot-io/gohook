@@ -2,9 +2,9 @@ package gitlab
 
 import (
 	"fmt"
-	webhook "gopkg.in/go-playground/webhooks.v5/gitlab"
 	"lab.venix.dev/widgetbot/gohook/structs"
 	"lab.venix.dev/widgetbot/gohook/utils"
+	webhook "lab.venix.dev/widgetbot/gohook/webhook/gitlab"
 )
 
 func PipelineHandler(c structs.EventContext) error {
@@ -45,7 +45,7 @@ func PipelineHandler(c structs.EventContext) error {
 			embed.AddField(fmt.Sprintf("Pipeline #%s", payload.ObjectAttributes.Ref), fmt.Sprintf("Pipeline %s in %d seconds.", status, payload.ObjectAttributes.Duration), false)
 		}
 
-	default: 
+	default:
 		{
 			return nil
 		}
