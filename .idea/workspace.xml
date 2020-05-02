@@ -19,10 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Move webhooks out of package so i can update them">
+    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Update Job events">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/gitlab/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/job.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/gitlab/pipeline.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/pipeline.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/gitlab/provider.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/provider.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webhook/gitlab/gitlab.go" beforeDir="false" afterPath="$PROJECT_DIR$/webhook/gitlab/gitlab.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webhook/gitlab/payload.go" beforeDir="false" afterPath="$PROJECT_DIR$/webhook/gitlab/payload.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +146,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Issue hook" />
     <MESSAGE value="Note hook" />
     <MESSAGE value="Basic readme so people can use it!!!!" />
     <MESSAGE value="Group gitlab commits so they look YUM" />
@@ -167,7 +170,8 @@
     <MESSAGE value="Github repo events" />
     <MESSAGE value="Fix empty embeds for github" />
     <MESSAGE value="Move webhooks out of package so i can update them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move webhooks out of package so i can update them" />
+    <MESSAGE value="Update Job events" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Job events" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -178,22 +182,22 @@
     </state>
     <state x="583" y="2" key="CommitChangelistDialog2/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588377574915" />
     <state x="2503" y="125" key="CommitChangelistDialog2/1920.98.1920.1040/0.0.1920.1040@1920.98.1920.1040" timestamp="1584370556693" />
-    <state width="1877" height="203" key="GridCell.Tab.0.bottom" timestamp="1586389384663">
+    <state width="1877" height="292" key="GridCell.Tab.0.bottom" timestamp="1588380959251">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="203" key="GridCell.Tab.0.bottom/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586389384663" />
-    <state width="1877" height="203" key="GridCell.Tab.0.center" timestamp="1586389384663">
+    <state width="1877" height="292" key="GridCell.Tab.0.bottom/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588380959251" />
+    <state width="1877" height="292" key="GridCell.Tab.0.center" timestamp="1588380959251">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="203" key="GridCell.Tab.0.center/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586389384663" />
-    <state width="1877" height="203" key="GridCell.Tab.0.left" timestamp="1586389384663">
+    <state width="1877" height="292" key="GridCell.Tab.0.center/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588380959251" />
+    <state width="1877" height="292" key="GridCell.Tab.0.left" timestamp="1588380959251">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="203" key="GridCell.Tab.0.left/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586389384663" />
-    <state width="1877" height="203" key="GridCell.Tab.0.right" timestamp="1586389384663">
+    <state width="1877" height="292" key="GridCell.Tab.0.left/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588380959251" />
+    <state width="1877" height="292" key="GridCell.Tab.0.right" timestamp="1588380959251">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="203" key="GridCell.Tab.0.right/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586389384663" />
+    <state width="1877" height="292" key="GridCell.Tab.0.right/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588380959251" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1588377266968">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -174,15 +174,15 @@ func eventParsing(gitLabEvent Event, events []Event, payload []byte) (interface{
 		err := json.Unmarshal([]byte(payload), &pl)
 		return pl, err
 	case JobEvents:
-		var pl JobEventPayload
+		var pl BuildEventPayload
 		err := json.Unmarshal([]byte(payload), &pl)
-		if err != nil {
-			return nil, err
-		}
-		if pl.ObjectKind == objectBuild {
-			return eventParsing(BuildEvents, events, payload)
-		}
-		return pl, nil
+		//if err != nil {
+		//	return nil, err
+		//}
+		//if pl.ObjectKind == objectBuild {
+		//	return eventParsing(BuildEvents, events, payload)
+		//}
+		return pl, err
 
 	case SystemHookEvents:
 		var pl SystemHookPayload

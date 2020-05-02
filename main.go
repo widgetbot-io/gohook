@@ -195,6 +195,9 @@ func loadProviders() {
 			"Job Hook": {
 				Handler: gitlab.JobHandler,
 			},
+			"Build Hook": {
+				Handler: gitlab.JobHandler,
+			},
 			"Merge Request Hook": {},
 			"Wiki Page Hook":     {},
 		},

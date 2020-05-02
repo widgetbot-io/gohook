@@ -1,7 +1,7 @@
 package gitlab
 
 import (
-	"github.com/sirupsen/logrus"
+	"fmt"
 	//"fmt"
 	//"github.com/sirupsen/logrus"
 	"lab.venix.dev/widgetbot/gohook/structs"
@@ -10,68 +10,91 @@ import (
 )
 
 func JobHandler(c structs.EventContext) error {
-	payload := c.Payload.(webhook.JobEventPayload)
-	// status := ""
+	payload := c.Payload.(webhook.BuildEventPayload)
+	tagged := payload.Tag
 
-	embed := utils.NewEmbed()
-	//	SetAuthor(payload.User.Name, payload.User.AvatarURL).
-	//	SetTitle(fmt.Sprintf("[%s:%d]", payload.ProjectName, payload.Commit.ID)).
-	//	SetFooter(c.Provider.Logo).
-	//	SetColour(0x0089ee).
-	//	SetURL(fmt.Sprintf("%s/-/jobs/%d", payload.Repository.URL, payload.JobID)).
-	//	AddField("a", "b", true).
-	//	SetTimestamp()
-	//
-	//logrus.Info(embed)
+	// TODO: SetURL is broken or the repo URL from gitlab is broken.
+	embed := utils.NewEmbed().
+		SetTitle(fmt.Sprintf("[%s:%s]", payload.Repository.Name, payload.Ref)).
+		SetAuthor(payload.User.Name, payload.User.AvatarURL).
+		SetFooter(c.Provider.Logo).
+		SetColour(0x00ff00).
+		SetTimestamp()
 
-	logrus.Info(payload.JobStage)
-	if payload.JobStage == "deploy" {
-		logrus.Info("depoy")
-		if payload.Tag == true {
-			logrus.Info("true")
-			embed.SetTitle("test").
-				SetAuthor(payload.User.Name, c.Provider.Logo).
-				SetFooter(c.Provider.Logo).
-				SetDescription("Version v0.0.0 is being deployed to xxx...").
-				SetColour(0x0000ff).
-				SetTimestamp()
+	description := ""
+	switch payload.BuildStatus {
+	case "failed":
+		description = "The job has failed."
+		embed.SetColour(0xff0000)
+	case "canceled":
+		description = "The job has been canceled."
+		embed.SetColour(0xffff00)
+	case "running":
+		{
+			switch payload.BuildStage {
+			case "deploy":
+				{
+					if tagged {
+						description = "Version %s is deploying..."
+					} else {
+						description = "The latest commit is deploying..."
+					}
+				}
+			case "production":
+				{
+					if tagged {
+						description = "Version %s is deploying to production..."
+					} else {
+						description = "The latest commit is deploying to production..."
+					}
+				}
+			case "staging":
+				{
+					if tagged {
+						description = "Version %s is deploying to staging..."
+					} else {
+						description = "The latest commit is deploying to staging..."
+					}
+				}
+			default:
+				description = "A job is running..."
+			}
 		}
+	case "success":
+		{
+			switch payload.BuildStage {
+			case "deploy":
+				{
+					if tagged {
+						description = "Version %s has deployed..."
+					} else {
+						description = "The latest commit has deployed..."
+					}
+				}
+			case "production":
+				{
+					if tagged {
+						description = "Version %s has deployed to production..."
+					} else {
+						description = "The latest commit has deployed to production..."
+					}
+				}
+			case "staging":
+				{
+					if tagged {
+						description = "Version %s has deployed to staging..."
+					} else {
+						description = "The latest commit has deployed to staging..."
+					}
+				}
+			default:
+				description = "A job is running..."
+			}
+		}
+	default:
+		return nil
 	}
-
-	//embed := utils.NewEmbed().
-	//	SetTitle("a").
-	//	SetAuthor("Test", c.Provider.Logo).
-	//	SetFooter(c.Provider.Logo).
-	//	SetDescription("Beep beep").
-	//	SetColour(utils.RandomColor()).
-	//	SetTimestamp()
-
-	//switch payload.ObjectAttributes.Status {
-	//case "cancelled":
-	//	{
-	//		status = "Cancelled"
-	//		embed.SetColour(0xFF0000)
-	//		embed.AddField(fmt.Sprintf("Pipeline #%s", payload.ObjectAttributes.Ref), fmt.Sprintf("Pipeline has been %s", status), false)
-	//	}
-	//case "running":
-	//	{
-	//		status = "Running"
-	//		embed.SetColour(0xffff00)
-	//		embed.AddField(fmt.Sprintf("Pipeline #%s", payload.ObjectAttributes.Ref), fmt.Sprintf("Pipeline has started %s", status), false)
-	//	}
-	//case "failed":
-	//	{
-	//		status = "Failed"
-	//		embed.SetColour(0xFF0000)
-	//		embed.AddField(fmt.Sprintf("Pipeline #%s", payload.ObjectAttributes.Ref), fmt.Sprintf("Pipeline %s", status), false)
-	//	}
-	//case "success":
-	//	{
-	//		status = "Succeeded"
-	//		embed.SetColour(0x00ff27)
-	//		embed.AddField(fmt.Sprintf("Pipeline #%s", payload.ObjectAttributes.Ref), fmt.Sprintf("Pipeline %s in %d seconds.", status, payload.ObjectAttributes.Duration), false)
-	//	}
-	//}
+	embed.SetDescription(fmt.Sprintf(description, payload.Ref))
 
 	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }

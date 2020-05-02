@@ -46,9 +46,7 @@ func PipelineHandler(c structs.EventContext) error {
 		}
 
 	default:
-		{
-			return nil
-		}
+		return nil
 	}
 
 	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
