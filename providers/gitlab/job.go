@@ -31,6 +31,7 @@ func JobHandler(c structs.EventContext) error {
 		embed.SetColour(0xffff00)
 	case "running":
 		{
+			embed.SetColour(0x0000ff)
 			switch payload.BuildStage {
 			case "production":
 				{
@@ -76,7 +77,7 @@ func JobHandler(c structs.EventContext) error {
 					}
 				}
 			default:
-				description = "A job is running..."
+				description = "A job has succeeded."
 			}
 		}
 	default:
