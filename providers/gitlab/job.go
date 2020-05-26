@@ -36,6 +36,7 @@ func JobHandler(c structs.EventContext) error {
 				{
 					if tagged {
 						description = "Version %s is deploying..."
+						description = fmt.Sprintf(description, payload.Ref)
 					} else {
 						description = "The latest commit is deploying..."
 					}
@@ -44,6 +45,7 @@ func JobHandler(c structs.EventContext) error {
 				{
 					if tagged {
 						description = "Version %s is deploying to production..."
+						description = fmt.Sprintf(description, payload.Ref)
 					} else {
 						description = "The latest commit is deploying to production..."
 					}
@@ -52,6 +54,7 @@ func JobHandler(c structs.EventContext) error {
 				{
 					if tagged {
 						description = "Version %s is deploying to staging..."
+						description = fmt.Sprintf(description, payload.Ref)
 					} else {
 						description = "The latest commit is deploying to staging..."
 					}
@@ -67,6 +70,7 @@ func JobHandler(c structs.EventContext) error {
 				{
 					if tagged {
 						description = "Version %s has deployed..."
+						description = fmt.Sprintf(description, payload.Ref)
 					} else {
 						description = "The latest commit has deployed..."
 					}
@@ -75,6 +79,7 @@ func JobHandler(c structs.EventContext) error {
 				{
 					if tagged {
 						description = "Version %s has deployed to production..."
+						description = fmt.Sprintf(description, payload.Ref)
 					} else {
 						description = "The latest commit has deployed to production..."
 					}
@@ -83,6 +88,7 @@ func JobHandler(c structs.EventContext) error {
 				{
 					if tagged {
 						description = "Version %s has deployed to staging..."
+						description = fmt.Sprintf(description, payload.Ref)
 					} else {
 						description = "The latest commit has deployed to staging..."
 					}
@@ -94,7 +100,7 @@ func JobHandler(c structs.EventContext) error {
 	default:
 		return nil
 	}
-	embed.SetDescription(fmt.Sprintf(description, payload.Ref))
+	embed.SetDescription(description)
 
 	return utils.SendToDiscord(c.ID, c.Secret, embed, c.Options)
 }
