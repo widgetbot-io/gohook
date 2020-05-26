@@ -32,15 +32,6 @@ func JobHandler(c structs.EventContext) error {
 	case "running":
 		{
 			switch payload.BuildStage {
-			case "deploy":
-				{
-					if tagged {
-						description = "Version %s is deploying..."
-						description = fmt.Sprintf(description, payload.Ref)
-					} else {
-						description = "The latest commit is deploying..."
-					}
-				}
 			case "production":
 				{
 					if tagged {
@@ -66,22 +57,13 @@ func JobHandler(c structs.EventContext) error {
 	case "success":
 		{
 			switch payload.BuildStage {
-			case "deploy":
-				{
-					if tagged {
-						description = "Version %s has deployed..."
-						description = fmt.Sprintf(description, payload.Ref)
-					} else {
-						description = "The latest commit has deployed..."
-					}
-				}
 			case "production":
 				{
 					if tagged {
 						description = "Version %s has deployed to production..."
 						description = fmt.Sprintf(description, payload.Ref)
 					} else {
-						description = "The latest commit has deployed to production..."
+						description = "The latest commit is deployed to production."
 					}
 				}
 			case "staging":
@@ -90,7 +72,7 @@ func JobHandler(c structs.EventContext) error {
 						description = "Version %s has deployed to staging..."
 						description = fmt.Sprintf(description, payload.Ref)
 					} else {
-						description = "The latest commit has deployed to staging..."
+						description = "The latest commit is deployed to staging."
 					}
 				}
 			default:
