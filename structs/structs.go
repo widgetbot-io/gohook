@@ -11,12 +11,13 @@ type Event struct {
 }
 
 type Provider struct {
-	Name      string
-	Logo      string
-	Header    string
-	EventName string
-	Events    map[string]Event
-	Handler   func(c ProviderContext) error
+	Name         string
+	Logo         string
+	Header       string
+	OptionHeader string
+	EventName    string
+	Events       map[string]Event
+	Handler      func(c ProviderContext) error
 }
 
 type ProviderContext struct {

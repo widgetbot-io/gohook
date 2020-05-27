@@ -55,6 +55,7 @@ func setupRoutes(router *gin.Engine) {
 		var event structs.Event
 		var eventName string
 		var provider structs.Provider
+		var options string
 		var BaseDetection structs.BaseDetection
 
 		payload, _ := utils.Parse(c.Request.Body)
@@ -77,8 +78,10 @@ func setupRoutes(router *gin.Engine) {
 			event = provider.Events[utils.EventDetection(BaseDetection)]
 			eventName = utils.EventDetection(BaseDetection)
 		}
-		log.Info(event)
-		log.Info(eventName)
+
+		if provider.OptionHeader != "" {
+			options = c.GetHeader(provider.OptionHeader)
+		}
 
 		if event.Handler == nil {
 			c.JSON(http.StatusNotImplemented, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
@@ -91,7 +94,7 @@ func setupRoutes(router *gin.Engine) {
 			Event:     event,
 			EventName: eventName,
 			Provider:  provider,
-			Options:   "",
+			Options:   options,
 			Payload:   payload,
 			Context:   c,
 		})
@@ -126,10 +129,11 @@ func loadProviders() {
 		},
 	})
 	addProvider(structs.Provider{
-		Name:    "gitlab",
-		Logo:    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png",
-		Header:  "X-Gitlab-Event",
-		Handler: gitlab.Handler,
+		Name:         "gitlab",
+		Logo:         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png",
+		Header:       "X-Gitlab-Event",
+		OptionHeader: "X-Gitlab-Token",
+		Handler:      gitlab.Handler,
 		Events: map[string]structs.Event{
 			"Push Hook": {
 				Handler: gitlab.PushHandler,

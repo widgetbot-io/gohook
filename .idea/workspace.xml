@@ -19,13 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Fix wording and change colour">
-      <change afterPath="$PROJECT_DIR$/providers/datadog/metric.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/providers/datadog/provider.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/providers/datadog/synthetics.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structs/datadog.go" afterDir="false" />
+    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Basic DataDog event handling">
+      <change afterPath="$PROJECT_DIR$/structs/options.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/structs/structs.go" beforeDir="false" afterPath="$PROJECT_DIR$/structs/structs.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +148,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Basic readme so people can use it!!!!" />
     <MESSAGE value="Group gitlab commits so they look YUM" />
     <MESSAGE value="Github gets cool grouping too!" />
     <MESSAGE value="Per module logo loading" />
@@ -175,7 +172,8 @@
     <MESSAGE value="Move webhooks out of package so i can update them" />
     <MESSAGE value="Update Job events" />
     <MESSAGE value="Fix wording and change colour" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix wording and change colour" />
+    <MESSAGE value="Basic DataDog event handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic DataDog event handling" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -194,37 +192,37 @@
     </state>
     <state x="583" y="2" key="CommitChangelistDialog2/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588377574915" />
     <state x="2503" y="125" key="CommitChangelistDialog2/1920.98.1920.1040/0.0.1920.1040@1920.98.1920.1040" timestamp="1584370556693" />
-    <state width="1878" height="248" key="GridCell.Tab.0.bottom" timestamp="1590620862506">
+    <state width="1878" height="248" key="GridCell.Tab.0.bottom" timestamp="1590620919931">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="248" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620862506" />
+    <state width="1878" height="248" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620919931" />
     <state width="1878" height="248" key="GridCell.Tab.0.bottom/0.23.1920.1057/1920.23.1920.1057@0.23.1920.1057" timestamp="1590619817127" />
     <state width="1878" height="248" key="GridCell.Tab.0.bottom/0.23.1920.973/1920.23.1920.1057@0.23.1920.973" timestamp="1590613814832" />
     <state width="1878" height="248" key="GridCell.Tab.0.bottom/0.23.1920.974/1920.23.1920.1057@0.23.1920.974" timestamp="1590615835884" />
     <state width="1878" height="248" key="GridCell.Tab.0.bottom/0.23.1920.977/1920.23.1920.1057@0.23.1920.977" timestamp="1590615804347" />
     <state width="1877" height="292" key="GridCell.Tab.0.bottom/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588380959251" />
-    <state width="1878" height="248" key="GridCell.Tab.0.center" timestamp="1590620862505">
+    <state width="1878" height="248" key="GridCell.Tab.0.center" timestamp="1590620919929">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="248" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620862505" />
+    <state width="1878" height="248" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620919929" />
     <state width="1878" height="248" key="GridCell.Tab.0.center/0.23.1920.1057/1920.23.1920.1057@0.23.1920.1057" timestamp="1590619817126" />
     <state width="1878" height="248" key="GridCell.Tab.0.center/0.23.1920.973/1920.23.1920.1057@0.23.1920.973" timestamp="1590613814831" />
     <state width="1878" height="248" key="GridCell.Tab.0.center/0.23.1920.974/1920.23.1920.1057@0.23.1920.974" timestamp="1590615835883" />
     <state width="1878" height="248" key="GridCell.Tab.0.center/0.23.1920.977/1920.23.1920.1057@0.23.1920.977" timestamp="1590615804347" />
     <state width="1877" height="292" key="GridCell.Tab.0.center/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588380959251" />
-    <state width="1878" height="248" key="GridCell.Tab.0.left" timestamp="1590620862504">
+    <state width="1878" height="248" key="GridCell.Tab.0.left" timestamp="1590620919928">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="248" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620862504" />
+    <state width="1878" height="248" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620919927" />
     <state width="1878" height="248" key="GridCell.Tab.0.left/0.23.1920.1057/1920.23.1920.1057@0.23.1920.1057" timestamp="1590619817125" />
     <state width="1878" height="248" key="GridCell.Tab.0.left/0.23.1920.973/1920.23.1920.1057@0.23.1920.973" timestamp="1590613814830" />
     <state width="1878" height="248" key="GridCell.Tab.0.left/0.23.1920.974/1920.23.1920.1057@0.23.1920.974" timestamp="1590615835883" />
     <state width="1878" height="248" key="GridCell.Tab.0.left/0.23.1920.977/1920.23.1920.1057@0.23.1920.977" timestamp="1590615804346" />
     <state width="1877" height="292" key="GridCell.Tab.0.left/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588380959251" />
-    <state width="1878" height="248" key="GridCell.Tab.0.right" timestamp="1590620862506">
+    <state width="1878" height="248" key="GridCell.Tab.0.right" timestamp="1590620919930">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="248" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620862506" />
+    <state width="1878" height="248" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620919930" />
     <state width="1878" height="248" key="GridCell.Tab.0.right/0.23.1920.1057/1920.23.1920.1057@0.23.1920.1057" timestamp="1590619817127" />
     <state width="1878" height="248" key="GridCell.Tab.0.right/0.23.1920.973/1920.23.1920.1057@0.23.1920.973" timestamp="1590613814831" />
     <state width="1878" height="248" key="GridCell.Tab.0.right/0.23.1920.974/1920.23.1920.1057@0.23.1920.974" timestamp="1590615835884" />
@@ -234,9 +232,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588377266968" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1590523932189">
-      <screen x="0" y="23" width="1920" height="977" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1590620998470">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1590620998470" />
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.23.1920.977/1920.23.1920.1057@0.23.1920.977" timestamp="1590523932189" />
     <state x="552" y="248" key="Vcs.Push.Dialog.v2/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586702912471" />
     <state x="2472" y="346" key="Vcs.Push.Dialog.v2/1920.98.1920.1040/0.0.1920.1040@1920.98.1920.1040" timestamp="1584370559028" />
