@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
+	"lab.venix.dev/widgetbot/gohook/providers/datadog"
 	"lab.venix.dev/widgetbot/gohook/providers/github"
 	"lab.venix.dev/widgetbot/gohook/providers/gitlab"
 	"lab.venix.dev/widgetbot/gohook/providers/radarr"
@@ -13,7 +14,6 @@ import (
 	"lab.venix.dev/widgetbot/gohook/structs"
 	"lab.venix.dev/widgetbot/gohook/utils"
 	"net/http"
-	"strings"
 )
 
 var EventCount int
@@ -77,6 +77,8 @@ func setupRoutes(router *gin.Engine) {
 			event = provider.Events[utils.EventDetection(BaseDetection)]
 			eventName = utils.EventDetection(BaseDetection)
 		}
+		log.Info(event)
+		log.Info(eventName)
 
 		if event.Handler == nil {
 			c.JSON(http.StatusNotImplemented, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
@@ -103,71 +105,26 @@ func setupRoutes(router *gin.Engine) {
 		c.JSON(200, gin.H{"message": "Event successfully handled"})
 		return
 	})
-	router.POST("/api/hook/:ID/:Secret/:Provider/*Options", func(c *gin.Context) {
-		options := c.Param("Options")
-		if strings.HasPrefix(options, "/") {
-			options = options[1:]
-		}
-
-		var event structs.Event
-		var eventName string
-		var provider structs.Provider
-		var BaseDetection structs.BaseDetection
-
-		payload, _ := utils.Parse(c.Request.Body)
-		c.Request.Body = ioutil.NopCloser(bytes.NewReader(payload))
-		_ = json.Unmarshal([]byte(payload), &BaseDetection)
-		idParam := c.Param("ID")
-		secretParam := c.Param("Secret")
-		providerParam := c.Param("Provider")
-		provider = Providers[providerParam]
-
-		if provider.Name == "" {
-			c.JSON(http.StatusNotImplemented, gin.H{"error": "Provider not found", "provider": providerParam})
-			return
-		} else if provider.Handler == nil {
-			c.JSON(http.StatusNotImplemented, gin.H{"error": "Provider not implemented", "provider": providerParam})
-		}
-
-		if provider.Header != "" {
-			event = provider.Events[c.GetHeader(provider.Header)]
-			eventName = c.GetHeader(provider.Header)
-		} else {
-			event = provider.Events[utils.EventDetection(BaseDetection)]
-			eventName = utils.EventDetection(BaseDetection)
-		}
-
-		if event.Handler == nil {
-			c.JSON(http.StatusNotImplemented, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
-			return
-		}
-
-		err := provider.Handler(structs.ProviderContext{
-			ID:        idParam,
-			Secret:    secretParam,
-			Event:     event,
-			EventName: eventName,
-			Provider:  provider,
-			Options:   options,
-			Payload:   payload,
-			Context:   c,
-		})
-
-		if err != nil {
-			log.Error(err)
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "An internal server error occurred when handling the event.", "provider": providerParam, "event": c.GetHeader(provider.Header)})
-			return
-		}
-
-		c.JSON(200, gin.H{"message": "Event successfully handled"})
-		return
-	})
 }
 
 func loadProviders() {
 	// Other things to send to/from:
 	// Slack, RocketChat, HipChat, Telegram, riot.im, IRC, XMPP
 	// Xenforo 2, IPSuite, MyBB, phpBB, Flarem, Discourse
+	addProvider(structs.Provider{
+		Name:      "datadog",
+		Logo:      "https://imgix.datadoghq.com/img/dd_logo_n_70x75.png",
+		EventName: "event_type",
+		Handler:   datadog.Handler,
+		Events: map[string]structs.Event{
+			"metric_alert_monitor": {
+				Handler: datadog.MetricHandler,
+			},
+			"synthetics_alert": {
+				Handler: datadog.SyntheticsHandler,
+			},
+		},
+	})
 	addProvider(structs.Provider{
 		Name:    "gitlab",
 		Logo:    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/1108px-GitLab_Logo.svg.png",
