@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Basic DataDog event handling">
-      <change afterPath="$PROJECT_DIR$/structs/options.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/structs/structs.go" beforeDir="false" afterPath="$PROJECT_DIR$/structs/structs.go" afterDir="false" />
-    </list>
+    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Basic DataDog event handling" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +46,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="$USER_HOME$/sdk/go1.14.3" />
+  <component name="GOROOT" path="C:\Users\Daave\sdk\go1.13.4" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -183,10 +178,11 @@
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="760" y="177" key="#GOPATH/0.23.1920.977/1920.23.1920.1057@0.23.1920.977" timestamp="1590523817244" />
-    <state x="760" y="448" key="#GOROOT" timestamp="1590523813588">
-      <screen x="0" y="23" width="1920" height="977" />
+    <state x="760" y="452" key="#GOROOT" timestamp="1592253269931">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="760" y="448" key="#GOROOT/0.23.1920.977/1920.23.1920.1057@0.23.1920.977" timestamp="1590523813588" />
+    <state x="760" y="452" key="#GOROOT/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592253269931" />
     <state x="583" y="2" key="CommitChangelistDialog2" timestamp="1588377574915">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -239,6 +235,10 @@
     <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.23.1920.977/1920.23.1920.1057@0.23.1920.977" timestamp="1590523932189" />
     <state x="552" y="248" key="Vcs.Push.Dialog.v2/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586702912471" />
     <state x="2472" y="346" key="Vcs.Push.Dialog.v2/1920.98.1920.1040/0.0.1920.1040@1920.98.1920.1040" timestamp="1584370559028" />
+    <state x="767" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592253264618">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="767" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.98.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592253264618" />
     <state x="646" y="94" width="758" height="852" key="find.popup" timestamp="1588377656254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

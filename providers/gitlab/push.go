@@ -60,7 +60,13 @@ func PushHandler(c structs.EventContext) error {
 
 	groups := utils.GitlabGroupBy(payload.Commits)
 
+	limit := 25
 	for k := range groups {
+		limit = -1
+		if limit == 0 {
+			break
+		}
+
 		group := groups[k]
 
 		commitString := ""
@@ -74,9 +80,9 @@ func PushHandler(c structs.EventContext) error {
 			}
 
 			if !utils.HasOptions(c.Options, "P") {
-				commitString += fmt.Sprintf("[%s](%s) - %s \n", b.ID[:7], b.URL, commitMessage)
+				commitString += fmt.Sprintf("[%s](%s) - %s \n", b.ID[:7], b.URL, commitMessage[:256])
 			} else {
-				commitString += fmt.Sprintf("`%s` - %s \n", b.ID[:7], commitMessage)
+				commitString += fmt.Sprintf("`%s` - %s \n", b.ID[:7], commitMessage[:256])
 			}
 		}
 
