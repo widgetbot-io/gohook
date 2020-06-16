@@ -62,7 +62,7 @@ func PushHandler(c structs.EventContext) error {
 
 	limit := 25
 	for k := range groups {
-		limit = -1
+		limit = limit - 1
 		if limit == 0 {
 			break
 		}
