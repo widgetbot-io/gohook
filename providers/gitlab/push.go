@@ -79,10 +79,13 @@ func PushHandler(c structs.EventContext) error {
 				commitMessage = b.Message
 			}
 
+			if len(commitMessage) > 256 {
+				commitMessage = commitMessage[:256]
+			}
 			if !utils.HasOptions(c.Options, "P") {
-				commitString += fmt.Sprintf("[%s](%s) - %s \n", b.ID[:7], b.URL, commitMessage[:256])
+				commitString += fmt.Sprintf("[%s](%s) - %s \n", b.ID[:7], b.URL, commitMessage)
 			} else {
-				commitString += fmt.Sprintf("`%s` - %s \n", b.ID[:7], commitMessage[:256])
+				commitString += fmt.Sprintf("`%s` - %s \n", b.ID[:7], commitMessage)
 			}
 		}
 
