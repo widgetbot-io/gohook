@@ -35,6 +35,7 @@ func HasOptions(options string, option string) bool {
 }
 
 func GetBranch(ref string) string {
+	fmt.Println(ref)
 	return strings.Join(strings.Split(ref, "/")[2:], "/")
 }
 
