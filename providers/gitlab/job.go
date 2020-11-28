@@ -16,6 +16,7 @@ func JobHandler(c structs.EventContext) error {
 	// TODO: SetURL is broken or the repo URL from gitlab is broken.
 	embed := utils.NewEmbed().
 		SetTitle(fmt.Sprintf("[%s:%s]", payload.Repository.Name, payload.Ref)).
+		SetURL(payload.Project.WebURL).
 		SetAuthor(payload.User.Name, payload.User.AvatarURL).
 		SetFooter(c.Provider.Logo).
 		SetColour(0x00ff00).
@@ -36,24 +37,21 @@ func JobHandler(c structs.EventContext) error {
 			case "production":
 				{
 					if tagged {
-						description = "Version %s is deploying to production..."
-						description = fmt.Sprintf(description, payload.Ref)
+						description = 
+						description = fmt.Sprintf("Version %s is deploying to production...", payload.Ref)
 					} else {
-						description = "The latest commit is deploying to production..."
+						description = "Deploying latest commit to production..."
 					}
 				}
 			case "staging":
 				{
 					if tagged {
-						description = "Version %s is deploying to staging..."
-						description = fmt.Sprintf(description, payload.Ref)
+						description = 
+						description = fmt.Sprintf("Version %s is deploying to staging...", payload.Ref)
 					} else {
-						description = "The latest commit is deploying to staging..."
+						description = "Deploying latest commit to staging..."
 					}
 				}
-			default:
-				description = "A job is running..."
-			}
 		}
 	case "success":
 		{
@@ -61,8 +59,8 @@ func JobHandler(c structs.EventContext) error {
 			case "production":
 				{
 					if tagged {
-						description = "Version %s has deployed to production..."
-						description = fmt.Sprintf(description, payload.Ref)
+						description = 
+						description = fmt.Sprintf("Version %s has deployed to production...", payload.Ref)
 					} else {
 						description = "The latest commit is deployed to production."
 					}
@@ -70,15 +68,12 @@ func JobHandler(c structs.EventContext) error {
 			case "staging":
 				{
 					if tagged {
-						description = "Version %s has deployed to staging..."
-						description = fmt.Sprintf(description, payload.Ref)
+						description = 
+						description = fmt.Sprintf("Deployed %s to staging!", payload.Ref)
 					} else {
-						description = "The latest commit is deployed to staging."
+						description = "Deployed latest commit to staging!"
 					}
 				}
-			default:
-				description = "A job has succeeded."
-			}
 		}
 	default:
 		return nil
