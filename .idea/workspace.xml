@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="Fix issues">
+    <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/providers/gitlab/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/job.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +150,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove random HTTP check" />
     <MESSAGE value="Fix event grabbing from body" />
     <MESSAGE value="Tidy up sonarr" />
     <MESSAGE value="Very basic options system, URL hiding!" />
@@ -176,7 +174,8 @@
     <MESSAGE value="Woops :V" />
     <MESSAGE value="Woops pt. 2" />
     <MESSAGE value="Aaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aaa" />
+    <MESSAGE value="Fix issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix issues" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -186,50 +185,50 @@
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state x="659" y="635" key="#GOROOT/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606599112193" />
-    <state x="490" y="268" key="CommitChangelistDialog2" timestamp="1606600900559">
+    <state x="490" y="268" key="CommitChangelistDialog2" timestamp="1606600922123">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="490" y="268" key="CommitChangelistDialog2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600900559" />
-    <state x="0" y="122" key="DiffContextDialog" timestamp="1606600897604">
+    <state x="490" y="268" key="CommitChangelistDialog2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600922123" />
+    <state x="0" y="122" key="DiffContextDialog" timestamp="1606600918349">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="0" y="122" key="DiffContextDialog/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600897604" />
-    <state width="1674" height="492" key="GridCell.Tab.0.bottom" timestamp="1606600852692">
+    <state x="0" y="122" key="DiffContextDialog/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600918349" />
+    <state width="1674" height="492" key="GridCell.Tab.0.bottom" timestamp="1606601191189">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.0.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600852692" />
-    <state width="1674" height="492" key="GridCell.Tab.0.center" timestamp="1606600852692">
+    <state width="1674" height="492" key="GridCell.Tab.0.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191189" />
+    <state width="1674" height="492" key="GridCell.Tab.0.center" timestamp="1606601191189">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.0.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600852692" />
-    <state width="1674" height="492" key="GridCell.Tab.0.left" timestamp="1606600852692">
+    <state width="1674" height="492" key="GridCell.Tab.0.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191189" />
+    <state width="1674" height="492" key="GridCell.Tab.0.left" timestamp="1606601191189">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.0.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600852692" />
-    <state width="1674" height="492" key="GridCell.Tab.0.right" timestamp="1606600852692">
+    <state width="1674" height="492" key="GridCell.Tab.0.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191189" />
+    <state width="1674" height="492" key="GridCell.Tab.0.right" timestamp="1606601191189">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.0.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600852692" />
-    <state width="1674" height="492" key="GridCell.Tab.1.bottom" timestamp="1606600858348">
+    <state width="1674" height="492" key="GridCell.Tab.0.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191189" />
+    <state width="1674" height="492" key="GridCell.Tab.1.bottom" timestamp="1606601191190">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600858348" />
-    <state width="1674" height="492" key="GridCell.Tab.1.center" timestamp="1606600858348">
+    <state width="1674" height="492" key="GridCell.Tab.1.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191190" />
+    <state width="1674" height="492" key="GridCell.Tab.1.center" timestamp="1606601191190">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600858348" />
-    <state width="1674" height="492" key="GridCell.Tab.1.left" timestamp="1606600858347">
+    <state width="1674" height="492" key="GridCell.Tab.1.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191190" />
+    <state width="1674" height="492" key="GridCell.Tab.1.left" timestamp="1606601191190">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600858347" />
-    <state width="1674" height="492" key="GridCell.Tab.1.right" timestamp="1606600858348">
+    <state width="1674" height="492" key="GridCell.Tab.1.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191190" />
+    <state width="1674" height="492" key="GridCell.Tab.1.right" timestamp="1606601191190">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600858348" />
-    <state x="459" y="437" key="Vcs.Push.Dialog.v2" timestamp="1606599298656">
+    <state width="1674" height="492" key="GridCell.Tab.1.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606601191190" />
+    <state x="459" y="437" key="Vcs.Push.Dialog.v2" timestamp="1606600924656">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="459" y="437" key="Vcs.Push.Dialog.v2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606599298656" />
+    <state x="459" y="437" key="Vcs.Push.Dialog.v2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600924656" />
     <state width="867" height="703" key="XDebugger.FullValuePopup" timestamp="1606600668422">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
@@ -238,11 +237,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/providers/gitlab/job.go</url>
-          <line>25</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/providers/gitlab/job.go</url>
           <line>80</line>

@@ -58,7 +58,7 @@ func JobHandler(c structs.EventContext) error {
 			case "production":
 				{
 					if tagged {
-						description = fmt.Sprintf("Version %s has deployed to production...", payload.Ref)
+						description = fmt.Sprintf("Version %s has deployed to production!", payload.Ref)
 					} else {
 						description = "The latest commit is deployed to production."
 					}

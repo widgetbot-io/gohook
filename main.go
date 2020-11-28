@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
@@ -48,6 +49,8 @@ func main() {
 		"port":    ":8443",
 	}).Info("Loaded Application!")
 	_ = router.Run(":8443")
+
+	log.Infof("Am i actually updated?")
 }
 
 func setupRoutes(router *gin.Engine) {
@@ -87,6 +90,8 @@ func setupRoutes(router *gin.Engine) {
 			c.JSON(http.StatusNotImplemented, gin.H{"error": "Event not found", "event": eventName, "provider": provider.Name})
 			return
 		}
+
+		fmt.Println(event, eventName, string(payload))
 
 		err := provider.Handler(structs.ProviderContext{
 			ID:        idParam,
