@@ -16,7 +16,7 @@ func JobHandler(c structs.EventContext) error {
 	// TODO: SetURL is broken or the repo URL from gitlab is broken.
 	embed := utils.NewEmbed().
 		SetTitle(fmt.Sprintf("[%s:%s]", payload.Repository.Name, payload.Ref)).
-		SetURL(payload.Repository.URL).
+		SetURL(fmt.Sprintf("%s/-/jobs/%d", payload.Repository.Homepage, payload.BuildID)).
 		SetAuthor(payload.User.Name, payload.User.AvatarURL).
 		SetFooter(c.Provider.Logo).
 		SetColour(0x00ff00).
