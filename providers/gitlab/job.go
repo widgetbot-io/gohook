@@ -50,6 +50,7 @@ func JobHandler(c structs.EventContext) error {
 						description = "Deploying latest commit to staging..."
 					}
 				}
+			}
 		}
 	case "success":
 		{
@@ -70,6 +71,7 @@ func JobHandler(c structs.EventContext) error {
 						description = "Deployed latest commit to staging!"
 					}
 				}
+			}
 		}
 	default:
 		return nil
