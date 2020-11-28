@@ -37,7 +37,6 @@ func JobHandler(c structs.EventContext) error {
 			case "production":
 				{
 					if tagged {
-						description = 
 						description = fmt.Sprintf("Version %s is deploying to production...", payload.Ref)
 					} else {
 						description = "Deploying latest commit to production..."
@@ -46,7 +45,6 @@ func JobHandler(c structs.EventContext) error {
 			case "staging":
 				{
 					if tagged {
-						description = 
 						description = fmt.Sprintf("Version %s is deploying to staging...", payload.Ref)
 					} else {
 						description = "Deploying latest commit to staging..."
@@ -59,7 +57,6 @@ func JobHandler(c structs.EventContext) error {
 			case "production":
 				{
 					if tagged {
-						description = 
 						description = fmt.Sprintf("Version %s has deployed to production...", payload.Ref)
 					} else {
 						description = "The latest commit is deployed to production."
@@ -68,7 +65,6 @@ func JobHandler(c structs.EventContext) error {
 			case "staging":
 				{
 					if tagged {
-						description = 
 						description = fmt.Sprintf("Deployed %s to staging!", payload.Ref)
 					} else {
 						description = "Deployed latest commit to staging!"
