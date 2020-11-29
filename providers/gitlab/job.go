@@ -2,6 +2,8 @@ package gitlab
 
 import (
 	"fmt"
+	"strings"
+
 	//"fmt"
 	//"github.com/sirupsen/logrus"
 	"lab.venix.dev/widgetbot/gohook/structs"
@@ -33,52 +35,39 @@ func JobHandler(c structs.EventContext) error {
 	case "running":
 		{
 			embed.SetColour(0x0000ff)
-			switch payload.BuildStage {
-			case "production":
-				{
+
+			if strings.HasPrefix(payload.BuildName, "deploy-") {
+				environment := strings.Trim(payload.BuildName, "deploy-")
+
+				if len(environment) != 0 {
 					if tagged {
-						description = fmt.Sprintf("Version %s is deploying to production...", payload.Ref)
+						description = fmt.Sprintf("Version %s is deploying to %s...", payload.Ref, environment)
 					} else {
-						description = "Deploying latest commit to production..."
+						description = fmt.Sprintf("Deploying latest commit to %s...", environment)
 					}
-				}
-			case "staging":
-				{
-					if tagged {
-						description = fmt.Sprintf("Version %s is deploying to staging...", payload.Ref)
-					} else {
-						description = "Deploying latest commit to staging..."
-					}
-				}
-			default:
-				{
+				} else {
 					return nil
 				}
+			} else {
+				return nil
 			}
 		}
 	case "success":
 		{
-			switch payload.BuildStage {
-			case "production":
-				{
+			if strings.HasPrefix(payload.BuildName, "deploy-") {
+				environment := strings.Trim(payload.BuildName, "deploy-")
+
+				if len(environment) != 0 {
 					if tagged {
-						description = fmt.Sprintf("Version %s has deployed to production!", payload.Ref)
+						description = fmt.Sprintf("Version %s has been deployed to %s...", payload.Ref, environment)
 					} else {
-						description = "The latest commit is deployed to production."
+						description = fmt.Sprintf("Deployed latest commit to %s...", environment)
 					}
-				}
-			case "staging":
-				{
-					if tagged {
-						description = fmt.Sprintf("Deployed %s to staging!", payload.Ref)
-					} else {
-						description = "Deployed latest commit to staging!"
-					}
-				}
-			default:
-				{
+				} else {
 					return nil
 				}
+			} else {
+				return nil
 			}
 		}
 	default:

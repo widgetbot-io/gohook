@@ -18,3 +18,20 @@ build:
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   except:
     - master
+
+deploy-production:
+  stage: production
+  image: registry.gitlab.com/gitlab-examples/kubernetes-deploy
+  before_script:
+    - kubectl config set-cluster default-cluster --server=$KUBE_URL --certificate-authority=$KUBE_CA_PEM_FILE
+    - kubectl config set-credentials default-admin --token=$KUBE_TOKEN
+    - kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
+    - kubectl config use-context default-system
+  script:
+    - kubectl set image deployment/gohook gohook=$CI_REGISTRY_IMAGE
+    - kubectl rollout status deployment/gohook
+  only:
+    - master
+  environment:
+    name: production
+    url: https://go.venix.dev
