@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        -
+
       - name: Docker login
         run: echo ${{ secrets.PAT }} | docker login ghcr.io --username yomanz --password-stdin
 
