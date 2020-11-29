@@ -32,7 +32,7 @@ deploy-production:
     - kubectl config set-context default-system --cluster=default-cluster --user=default-admin --namespace=default
     - kubectl config use-context default-system
   script:
-    - kubectl set image deployment/gohook gohook=$CI_REGISTRY_IMAGE
+    - kubectl rollout restart deployment/gohook
     - kubectl rollout status deployment/gohook
   only:
     - master
