@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/gitlab/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/job.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +148,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Very basic options system, URL hiding!" />
     <MESSAGE value="Hide commit URLs" />
     <MESSAGE value="Never ask a lazy person to do an easy job" />
     <MESSAGE value="Start cooler option stuff" />
@@ -175,7 +172,8 @@
     <MESSAGE value="Fix issues" />
     <MESSAGE value="!Debug" />
     <MESSAGE value="Fix an issue which spams empty embeds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix an issue which spams empty embeds" />
+    <MESSAGE value="Implement better deployment notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement better deployment notifications" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -185,14 +183,14 @@
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state x="659" y="635" key="#GOROOT/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606599112193" />
-    <state x="490" y="268" key="CommitChangelistDialog2" timestamp="1606618124852">
+    <state x="490" y="268" key="CommitChangelistDialog2" timestamp="1606671775950">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="490" y="268" key="CommitChangelistDialog2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606618124852" />
-    <state x="0" y="122" key="DiffContextDialog" timestamp="1606600918349">
+    <state x="490" y="268" key="CommitChangelistDialog2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671775950" />
+    <state x="0" y="122" key="DiffContextDialog" timestamp="1606671763550">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="0" y="122" key="DiffContextDialog/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600918349" />
+    <state x="0" y="122" key="DiffContextDialog/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671763550" />
     <state width="1674" height="400" key="GridCell.Tab.0.bottom" timestamp="1606617114832">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
@@ -225,10 +223,10 @@
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state width="1674" height="492" key="GridCell.Tab.1.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617113079" />
-    <state x="459" y="437" key="Vcs.Push.Dialog.v2" timestamp="1606618126519">
+    <state x="459" y="437" key="Vcs.Push.Dialog.v2" timestamp="1606671862957">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="459" y="437" key="Vcs.Push.Dialog.v2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606618126519" />
+    <state x="459" y="437" key="Vcs.Push.Dialog.v2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671862957" />
     <state width="867" height="703" key="XDebugger.FullValuePopup" timestamp="1606600668422">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
