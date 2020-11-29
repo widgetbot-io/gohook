@@ -27,6 +27,10 @@ func JobHandler(c structs.EventContext) error {
 	description := ""
 	switch payload.BuildStatus {
 	case "failed":
+		if payload.BuildAllowFailure {
+			return nil
+		}
+
 		description = "The job has failed."
 		embed.SetColour(0xff0000)
 	case "canceled":
@@ -37,7 +41,7 @@ func JobHandler(c structs.EventContext) error {
 			embed.SetColour(0x0000ff)
 
 			if strings.HasPrefix(payload.BuildName, "deploy-") {
-				environment := strings.Trim(payload.BuildName, "deploy-")
+				environment := strings.TrimPrefix(payload.BuildName, "deploy-")
 
 				if len(environment) != 0 {
 					if tagged {

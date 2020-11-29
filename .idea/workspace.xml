@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b293f61c-9421-402e-8ce7-5d7f6d6ef062" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/gitlab/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/providers/gitlab/job.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +149,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Hide commit URLs" />
     <MESSAGE value="Never ask a lazy person to do an easy job" />
     <MESSAGE value="Start cooler option stuff" />
     <MESSAGE value="Actually implement download event and change structs" />
@@ -173,7 +173,8 @@
     <MESSAGE value="!Debug" />
     <MESSAGE value="Fix an issue which spams empty embeds" />
     <MESSAGE value="Implement better deployment notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement better deployment notifications" />
+    <MESSAGE value="!Okay" />
+    <option name="LAST_COMMIT_MESSAGE" value="!Okay" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -183,53 +184,64 @@
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state x="659" y="635" key="#GOROOT/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606599112193" />
-    <state x="490" y="268" key="CommitChangelistDialog2" timestamp="1606671775950">
+    <state x="490" y="268" key="CommitChangelistDialog2" timestamp="1606671903630">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="490" y="268" key="CommitChangelistDialog2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671775950" />
+    <state x="490" y="268" key="CommitChangelistDialog2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671903629" />
     <state x="0" y="122" key="DiffContextDialog" timestamp="1606671763550">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state x="0" y="122" key="DiffContextDialog/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671763550" />
-    <state width="1674" height="400" key="GridCell.Tab.0.bottom" timestamp="1606617114832">
+    <state width="1674" height="492" key="GridCell.Tab.0.bottom" timestamp="1606674798504">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="400" key="GridCell.Tab.0.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617114832" />
-    <state width="1674" height="400" key="GridCell.Tab.0.center" timestamp="1606617114832">
+    <state width="1674" height="492" key="GridCell.Tab.0.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674798504" />
+    <state width="1674" height="492" key="GridCell.Tab.0.center" timestamp="1606674798504">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="400" key="GridCell.Tab.0.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617114832" />
-    <state width="1674" height="400" key="GridCell.Tab.0.left" timestamp="1606617114832">
+    <state width="1674" height="492" key="GridCell.Tab.0.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674798504" />
+    <state width="1674" height="492" key="GridCell.Tab.0.left" timestamp="1606674798504">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="400" key="GridCell.Tab.0.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617114832" />
-    <state width="1674" height="400" key="GridCell.Tab.0.right" timestamp="1606617114832">
+    <state width="1674" height="492" key="GridCell.Tab.0.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674798504" />
+    <state width="1674" height="492" key="GridCell.Tab.0.right" timestamp="1606674798504">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="400" key="GridCell.Tab.0.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617114832" />
-    <state width="1674" height="492" key="GridCell.Tab.1.bottom" timestamp="1606617113079">
+    <state width="1674" height="492" key="GridCell.Tab.0.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674798504" />
+    <state width="1674" height="492" key="GridCell.Tab.1.bottom" timestamp="1606674846719">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617113079" />
-    <state width="1674" height="492" key="GridCell.Tab.1.center" timestamp="1606617113079">
+    <state width="1674" height="492" key="GridCell.Tab.1.bottom/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674846719" />
+    <state width="1674" height="492" key="GridCell.Tab.1.center" timestamp="1606674846718">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617113079" />
-    <state width="1674" height="492" key="GridCell.Tab.1.left" timestamp="1606617113079">
+    <state width="1674" height="492" key="GridCell.Tab.1.center/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674846718" />
+    <state width="1674" height="492" key="GridCell.Tab.1.left" timestamp="1606674846718">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617113079" />
-    <state width="1674" height="492" key="GridCell.Tab.1.right" timestamp="1606617113079">
+    <state width="1674" height="492" key="GridCell.Tab.1.left/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674846718" />
+    <state width="1674" height="492" key="GridCell.Tab.1.right" timestamp="1606674846718">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state width="1674" height="492" key="GridCell.Tab.1.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606617113079" />
-    <state x="459" y="437" key="Vcs.Push.Dialog.v2" timestamp="1606671862957">
+    <state width="1674" height="492" key="GridCell.Tab.1.right/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606674846718" />
+    <state x="459" y="437" key="Vcs.Push.Dialog.v2" timestamp="1606671905347">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="459" y="437" key="Vcs.Push.Dialog.v2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671862957" />
+    <state x="459" y="437" key="Vcs.Push.Dialog.v2/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606671905347" />
     <state width="867" height="703" key="XDebugger.FullValuePopup" timestamp="1606600668422">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state width="867" height="703" key="XDebugger.FullValuePopup/0.0.3440.1410/-1920.180.1920.1050@0.0.3440.1410" timestamp="1606600668422" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/providers/gitlab/job.go</url>
+          <line>45</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
