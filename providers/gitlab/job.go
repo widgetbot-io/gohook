@@ -59,7 +59,7 @@ func JobHandler(c structs.EventContext) error {
 	case "success":
 		{
 			if strings.HasPrefix(payload.BuildName, "deploy-") {
-				environment := strings.Trim(payload.BuildName, "deploy-")
+				environment := strings.TrimPrefix(payload.BuildName, "deploy-")
 
 				if len(environment) != 0 {
 					if tagged {
