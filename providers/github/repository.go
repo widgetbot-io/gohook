@@ -3,8 +3,8 @@ package github
 import (
 	"fmt"
 	webhook "gopkg.in/go-playground/webhooks.v5/github"
-	"lab.venix.dev/widgetbot/gohook/structs"
-	"lab.venix.dev/widgetbot/gohook/utils"
+	"github.com/widgetbot-io/gohook/structs"
+	"github.com/widgetbot-io/gohook/utils"
 )
 
 func RepositoryHandler(c structs.EventContext) error {

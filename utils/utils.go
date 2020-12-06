@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"lab.venix.dev/widgetbot/gohook/structs"
-	"lab.venix.dev/widgetbot/gohook/webhook/gitlab"
+	"github.com/widgetbot-io/gohook/structs"
+	"github.com/widgetbot-io/gohook/webhook/gitlab"
 	"net/http"
 	"strings"
 )

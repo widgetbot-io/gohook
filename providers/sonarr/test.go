@@ -2,8 +2,8 @@ package sonarr
 
 import (
 	"github.com/sirupsen/logrus"
-	"lab.venix.dev/widgetbot/gohook/structs"
-	"lab.venix.dev/widgetbot/gohook/utils"
+	"github.com/widgetbot-io/gohook/structs"
+	"github.com/widgetbot-io/gohook/utils"
 )
 
 func TestHandler(c structs.EventContext) error {

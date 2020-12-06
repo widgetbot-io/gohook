@@ -2,8 +2,8 @@ package datadog
 
 import (
 	"fmt"
-	"lab.venix.dev/widgetbot/gohook/structs"
-	"lab.venix.dev/widgetbot/gohook/utils"
+	"github.com/widgetbot-io/gohook/structs"
+	"github.com/widgetbot-io/gohook/utils"
 )
 
 func MetricHandler(c structs.EventContext) error {

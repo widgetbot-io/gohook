@@ -1,8 +1,8 @@
 package gitlab
 
 import (
-	"lab.venix.dev/widgetbot/gohook/structs"
-	webhook "lab.venix.dev/widgetbot/gohook/webhook/gitlab"
+	"github.com/widgetbot-io/gohook/structs"
+	webhook "github.com/widgetbot-io/gohook/webhook/gitlab"
 )
 
 func SystemHandler(c structs.EventContext) error {

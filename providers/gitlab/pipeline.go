@@ -2,9 +2,9 @@ package gitlab
 
 import (
 	"fmt"
-	"lab.venix.dev/widgetbot/gohook/structs"
-	"lab.venix.dev/widgetbot/gohook/utils"
-	webhook "lab.venix.dev/widgetbot/gohook/webhook/gitlab"
+	"github.com/widgetbot-io/gohook/structs"
+	"github.com/widgetbot-io/gohook/utils"
+	webhook "github.com/widgetbot-io/gohook/webhook/gitlab"
 )
 
 func PipelineHandler(c structs.EventContext) error {

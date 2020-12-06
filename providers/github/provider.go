@@ -2,7 +2,7 @@ package github
 
 import (
 	webhook "gopkg.in/go-playground/webhooks.v5/github"
-	"lab.venix.dev/widgetbot/gohook/structs"
+	"github.com/widgetbot-io/gohook/structs"
 )
 
 func Handler(c structs.ProviderContext) error {

@@ -1,8 +1,8 @@
 package sonarr
 
 import (
-	"lab.venix.dev/widgetbot/gohook/structs"
-	"lab.venix.dev/widgetbot/gohook/utils"
+	"github.com/widgetbot-io/gohook/structs"
+	"github.com/widgetbot-io/gohook/utils"
 )
 
 func GrabHandler(c structs.EventContext) error {
