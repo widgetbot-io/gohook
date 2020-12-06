@@ -1,4 +1,4 @@
-module lab.venix.dev/widgetbot/gohook
+module github.com/widgetbot-io/gohook
 
 go 1.12
 
